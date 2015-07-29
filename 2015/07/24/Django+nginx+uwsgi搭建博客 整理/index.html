@@ -1,0 +1,582 @@
+
+ <!DOCTYPE HTML>
+<html lang="zh-Hans">
+<head>
+  <meta charset="UTF-8">
+  
+    <title>Django + nginx + uwsgi搭建博客 整理 | 豪气干云</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    
+    <meta name="author" content="Tenlee">
+    
+
+    
+    <meta name="description" content="站在前辈的肩膀上
+
+第一步-&amp;gt;用Django搭建简易博客来自Andrew Liu
+
+Django搭建简易博客教程(一)Django简介
+Django搭建简易博客教程(二)开发环境和Django安装
+Django搭建简易博客教程(三)项目与App
+Django搭建简易博客教程(四)Models
+Django搭建简易博客教程(五)Admin
+Django搭建简易博客教程(六)Views和URL">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Django + nginx + uwsgi搭建博客 整理">
+<meta property="og:url" content="http://tenlee2012.github.com/2015/07/24/Django+nginx+uwsgi搭建博客 整理/index.html">
+<meta property="og:site_name" content="豪气干云">
+<meta property="og:description" content="站在前辈的肩膀上
+
+第一步-&amp;gt;用Django搭建简易博客来自Andrew Liu
+
+Django搭建简易博客教程(一)Django简介
+Django搭建简易博客教程(二)开发环境和Django安装
+Django搭建简易博客教程(三)项目与App
+Django搭建简易博客教程(四)Models
+Django搭建简易博客教程(五)Admin
+Django搭建简易博客教程(六)Views和URL">
+<meta property="og:updated_time" content="2015-07-29T09:20:10.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Django + nginx + uwsgi搭建博客 整理">
+<meta name="twitter:description" content="站在前辈的肩膀上
+
+第一步-&amp;gt;用Django搭建简易博客来自Andrew Liu
+
+Django搭建简易博客教程(一)Django简介
+Django搭建简易博客教程(二)开发环境和Django安装
+Django搭建简易博客教程(三)项目与App
+Django搭建简易博客教程(四)Models
+Django搭建简易博客教程(五)Admin
+Django搭建简易博客教程(六)Views和URL">
+<link rel="publisher" href="108932500160929600337">
+
+    
+    <link rel="alternative" href="/atom.xml" title="豪气干云" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="/img/favicon.ico">
+    
+    
+    <link rel="apple-touch-icon" href="/img/jacman.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/img/jacman.jpg">
+    
+    <link rel="stylesheet" href="/css/style.css" type="text/css">
+</head>
+
+  <body>
+    <header>
+      
+<div>
+		
+			<div id="imglogo">
+				<a href="/"><img src="/img/logo.png" alt="豪气干云" title="豪气干云"/></a>
+			</div>
+			
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="豪气干云">豪气干云</a></h1>
+				<h2 class="blog-motto"></h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜單">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					<ul>
+					 
+						<li><a href="/">Home</a></li>
+					
+						<li><a href="/archives">Archives</a></li>
+					
+						<li><a href="/tags">tags</a></li>
+					
+						<li><a href="/about">About</a></li>
+					
+					<li>
+ 					
+					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="搜索" />
+						<input type="hidden" name="q" value="site:tenlee2012.github.com">
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+  
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2015/07/24/Django+nginx+uwsgi搭建博客 整理/" title="Django + nginx + uwsgi搭建博客 整理" itemprop="url">Django + nginx + uwsgi搭建博客 整理</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="https://plus.google.com/108932500160929600337?rel=author" title="Tenlee" target="_blank" itemprop="author">Tenlee</a>
+		
+  <p class="article-time">
+    <time datetime="2015-07-24T06:02:17.000Z" itemprop="datePublished"> 發表於 2015-07-24</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">文章目錄</strong>
+		
+			<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#第一步->用Django搭建简易博客"><span class="toc-number">1.</span> <span class="toc-text">第一步->用Django搭建简易博客</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#第二步->部署在nginx上"><span class="toc-number">2.</span> <span class="toc-text">第二步->部署在nginx上</span></a></li></ol>
+		
+		</div>
+		
+		<blockquote>
+<p>站在前辈的肩膀上</p>
+</blockquote>
+<h3 id="第一步-&gt;用Django搭建简易博客">第一步-&gt;用Django搭建简易博客</h3><p>来自<a href="http://andrewliu.tk/" target="_blank" rel="external">Andrew Liu</a></p>
+<ul>
+<li><a href="http://andrewliu.tk/2014/12/22/Django%E6%90%AD%E5%BB%BA%E7%AE%80%E6%98%93%E5%8D%9A%E5%AE%A2%E6%95%99%E7%A8%8B-%E4%B8%80-Django%E7%AE%80%E4%BB%8B/" target="_blank" rel="external">Django搭建简易博客教程(一)Django简介</a></li>
+<li><a href="http://andrewliu.tk/2014/12/22/Django%E6%90%AD%E5%BB%BA%E7%AE%80%E6%98%93%E5%8D%9A%E5%AE%A2%E6%95%99%E7%A8%8B-%E4%BA%8C-%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E5%92%8CDjango%E5%AE%89%E8%A3%85/" target="_blank" rel="external">Django搭建简易博客教程(二)开发环境和Django安装</a></li>
+<li><a href="http://andrewliu.tk/2014/12/22/Django%E6%90%AD%E5%BB%BA%E7%AE%80%E6%98%93%E5%8D%9A%E5%AE%A2%E6%95%99%E7%A8%8B-%E4%B8%89-%E9%A1%B9%E7%9B%AE%E4%B8%8EApp/" target="_blank" rel="external">Django搭建简易博客教程(三)项目与App</a></li>
+<li><a href="http://andrewliu.tk/2014/12/26/Django%E6%90%AD%E5%BB%BA%E7%AE%80%E6%98%93%E5%8D%9A%E5%AE%A2%E6%95%99%E7%A8%8B-%E5%9B%9B-Models/" target="_blank" rel="external">Django搭建简易博客教程(四)Models</a></li>
+<li><a href="http://andrewliu.tk/2014/12/27/Django%E6%90%AD%E5%BB%BA%E7%AE%80%E6%98%93%E5%8D%9A%E5%AE%A2%E6%95%99%E7%A8%8B-%E4%BA%94-Admin/" target="_blank" rel="external">Django搭建简易博客教程(五)Admin</a></li>
+<li><a href="http://andrewliu.tk/2014/12/27/Django%E6%90%AD%E5%BB%BA%E7%AE%80%E6%98%93%E5%8D%9A%E5%AE%A2%E6%95%99%E7%A8%8B-%E5%85%AD-Views%E5%92%8CURL/" target="_blank" rel="external">Django搭建简易博客教程(六)Views和URL</a> </li>
+<li><p><a href="http://andrewliu.tk/2014/12/27/Django%E6%90%AD%E5%BB%BA%E7%AE%80%E6%98%93%E5%8D%9A%E5%AE%A2%E6%95%99%E7%A8%8B-%E4%B8%83-Template/" target="_blank" rel="external">Django搭建简易博客教程(七)Template</a></p>
+<ul>
+<li>此处补充 <figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">TEMPLATES = [</span><br><span class="line">   <span class="preprocessor">#...</span></span><br><span class="line">   <span class="string">'DIRS'</span>: [os.path.<span class="keyword">join</span>(BASE_DIR, <span class="string">'templates'</span>)],</span><br><span class="line">   <span class="preprocessor">#...</span></span><br><span class="line">  ]</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li><p><a href="http://andrewliu.tk/2014/12/28/Django%E6%90%AD%E5%BB%BA%E7%AE%80%E6%98%93%E5%8D%9A%E5%AE%A2%E6%95%99%E7%A8%8B-%E5%85%AB-%E5%8A%A8%E6%80%81URL/" target="_blank" rel="external">Django搭建简易博客教程(八)动态URL</a></p>
+</li>
+<li><a href="http://andrewliu.tk/2015/01/09/Django%E6%90%AD%E5%BB%BA%E7%AE%80%E6%98%93%E5%8D%9A%E5%AE%A2%E6%95%99%E7%A8%8B-%E4%B9%9D-%E5%A4%9A%E8%AF%B4-markdown%E5%92%8C%E4%BB%A3%E7%A0%81%E9%AB%98%E4%BA%AE/" target="_blank" rel="external">Django搭建简易博客教程(九)多说,markdown和代码高亮</a><ul>
+<li>此处补充 应该 pip install pygments</li>
+</ul>
+</li>
+</ul>
+<p>作者在gitbooks出的书上还有额外精彩的章节</p>
+<ul>
+<li><strong>归档, AboutMe和标签分类</strong></li>
+<li><strong>搜索和ReadMore</strong></li>
+<li><strong>RSS和分页</strong><br>地址：<a href="https://www.gitbook.com/book/andrew-liu/django-blog/details" target="_blank" rel="external">戳我</a><h3 id="第二步-&gt;部署在nginx上">第二步-&gt;部署在nginx上</h3>感谢这位博主：<a href="http://blog.igevin.info/" target="_blank" rel="external">gevin</a></li>
+<li><a href="http://blog.igevin.info/2014/09/30/deploy-django-with-nginx-and-uwsgi-on-Ubuntu/" target="_blank" rel="external">基于nginx和uWSGI在Ubuntu上部署Django</a></li>
+</ul>
+<p>以上本人亲测可行，ubuntu15.04, python2.7 和 python3.4均可</p>
+  
+	</div>
+		<footer class="article-footer clearfix">
+<div class="article-catetags">
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/Python-Django-Blog/">Python Django Blog</a>
+  </div>
+
+</div>
+
+
+
+	<div class="article-share" id="share">
+	
+	  <div data-url="http://tenlee2012.github.com/2015/07/24/Django+nginx+uwsgi搭建博客 整理/" data-title="Django + nginx + uwsgi搭建博客 整理 | 豪气干云" data-tsina="null" class="share clearfix">
+	  </div>
+	
+	</div>
+
+
+</footer>
+
+   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+ <div class="prev" >
+ <a href="/2015/07/25/HDU5305/" title="HDU 5305 Friends(2015多校联合)">
+  <strong>上一篇：</strong><br/>
+  <span>
+  HDU 5305 Friends(2015多校联合)</span>
+</a>
+</div>
+
+
+<div class="next">
+<a href="/2015/07/23/HDU5288/"  title="HDU 5288 OO’s Sequence(2015多校联合)">
+ <strong>下一篇：</strong><br/> 
+ <span>HDU 5288 OO’s Sequence(2015多校联合)
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+<section id="comments" class="comment">
+	<div class="ds-thread" data-thread-key="2015/07/24/Django+nginx+uwsgi搭建博客 整理/" data-title="Django + nginx + uwsgi搭建博客 整理" data-url="http://tenlee2012.github.com/2015/07/24/Django+nginx+uwsgi搭建博客 整理/"></div>
+</section>
+
+
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="顯示側邊欄"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">文章目錄</strong>
+ 
+ <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#第一步->用Django搭建简易博客"><span class="toc-number">1.</span> <span class="toc-text">第一步->用Django搭建简易博客</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#第二步->部署在nginx上"><span class="toc-number">2.</span> <span class="toc-text">第二步->部署在nginx上</span></a></li></ol>
+ 
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="隱藏側邊欄"></a></div>
+<aside class="clearfix">
+
+  
+
+  
+<div class="tagslist">
+	<p class="asidetitle">標簽</p>
+		<ul class="clearfix">
+		
+			
+				<li><a href="/tags/HDUOJ/" title="HDUOJ">HDUOJ<sup>8</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/Python-Django-Blog/" title="Python Django Blog">Python Django Blog<sup>1</sup></a></li>
+			
+		
+		</ul>
+</div>
+
+
+  <div class="linkslist">
+  <p class="asidetitle">友情鏈接</p>
+    <ul>
+        
+          <li>
+            
+            	<a href="https://coderq.com" target="_blank" title="一个面向程序员交流分享的新一代社区">码农圈</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://glgoo.com" target="_blank" title="国内谷歌">国内谷歌</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://www.cnblogs.com/tenlee" target="_blank" title="tenlee&#39;s Blog">tenlee&#39;s Blog</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://wuchong.me" target="_blank" title="Jark&#39;s Blog">Jark&#39;s Blog</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://jzqt.github.io" target="_blank" title="JZQT&#39;s Blog">JZQT&#39;s Blog</a>
+            
+          </li>
+        
+    </ul>
+</div>
+
+  
+
+
+  <div class="rsspart">
+	<a href="/atom.xml" target="_blank" title="rss">RSS 訂閱</a>
+</div>
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<section class="info">
+		<p> Hello ,I&#39;m tenlee. <br/>
+			This is my blog,believe it or not.</p>
+	</section>
+	 
+	<div class="social-font" class="clearfix">
+		
+		<a href="http://weibo.com/tenlee2012" target="_blank" class="icon-weibo" title="微博"></a>
+		
+		
+		
+		
+		
+		
+		
+		
+		<a href="http://www.zhihu.com/people/tenlee" target="_blank" class="icon-zhihu" title="知乎"></a>
+		
+		
+		<a href="https://plus.google.com/108932500160929600337?rel=author" target="_blank" class="icon-google_plus" title="Google+"></a>
+		
+		
+		<a href="mailto:tenlee2012@163.com" target="_blank" class="icon-email" title="Email Me"></a>
+		
+	</div>
+			
+		
+
+		<p class="copyright">
+		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2015 
+		
+		<a href="/about" target="_blank" title="Tenlee">Tenlee</a>
+		
+		
+		</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/jquery.qrcode-0.12.0.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+  
+        getSize();
+        if (myWidth >= 1024) {
+          c.click();
+        }
+  
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else{
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  c.click(function(){
+    ta.css('display', 'block').addClass('fadeIn');
+  });
+  o.click(function(){
+    ta.css('display', 'none');
+  });
+  $(window).scroll(function(){
+    ta.css("top",Math.max(140,320-$(this).scrollTop()));
+  });
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina'),
+      description = $this.attr('description');
+  var html = [
+  '<div class="hoverqrcode clearfix"></div>',
+  '<a class="overlay" id="qrcode"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="微信"></a>',
+  '<a href="http://widget.renren.com/dialog/share?resourceUrl=' + encodedUrl + '&srcUrl=' + encodedUrl + '&title=' + title +'" class="article-share-renren" target="_blank" title="人人"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="微博"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+
+  $('.hoverqrcode').hide();
+
+  var myWidth = 0;
+  function updatehoverqrcode(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+    var qrsize = myWidth > 1024 ? 200:100;
+    var options = {render: 'image', size: qrsize, fill: '#2ca6cb', text: url, radius: 0.5, quiet: 1};
+    var p = $('.article-share-qrcode').position();
+    $('.hoverqrcode').empty().css('width', qrsize).css('height', qrsize)
+                          .css('left', p.left-qrsize/2+20).css('top', p.top-qrsize-10)
+                          .qrcode(options);
+  };
+  $(window).resize(function(){
+    $('.hoverqrcode').hide();
+  });
+  $('.article-share-qrcode').click(function(){
+    updatehoverqrcode();
+    $('.hoverqrcode').toggle();
+  });
+  $('.article-share-qrcode').hover(function(){}, function(){
+      $('.hoverqrcode').hide();
+  });
+});   
+</script>
+
+
+
+<script type="text/javascript">
+  var duoshuoQuery = {short_name:"tenlee2012"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] 
+    || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+</script> 
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.article-content').each(function(i){
+    $(this).find('img').each(function(){
+      if ($(this).parent().hasClass('fancybox')) return;
+      var alt = this.alt;
+      if (alt) $(this).after('<span class="caption">' + alt + '</span>');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
+    });
+    $(this).find('.fancybox').each(function(){
+      $(this).attr('rel', 'article' + i);
+    });
+  });
+  if($.fancybox){
+    $('.fancybox').fancybox();
+  }
+}); 
+</script>
+
+
+
+<!-- Analytics Begin -->
+
+
+
+<script type="text/javascript">
+var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3Fa1eb6e34b6f3af6aeabbc1527c36760f' type='text/javascript'%3E%3C/script%3E"));
+</script>
+
+
+
+<!-- Analytics End -->
+
+<!-- Totop Begin -->
+
+	<div id="totop">
+	<a title="返回頂部"><img src="/img/scrollup.png"/></a>
+	</div>
+	<script src="/js/totop.js"></script>
+
+<!-- Totop End -->
+
+<!-- MathJax Begin -->
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+<!-- MathJax End -->
+
+<!-- Tiny_search Begin -->
+
+<!-- Tiny_search End -->
+
+  </body>
+</html>

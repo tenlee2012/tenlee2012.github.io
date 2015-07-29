@@ -1,7 +1,7 @@
 
   
     <!DOCTYPE HTML>
-<html lang="zh-CN">
+<html lang="zh-Hans">
 <head>
   <meta charset="UTF-8">
   
@@ -50,7 +50,7 @@
 				<h1 class="site-name"><a href="/" title="豪气干云">豪气干云</a></h1>
 				<h2 class="blog-motto"></h2>
 			</div>
-			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜单">
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜單">
 			</a></div>
 			<nav class="animated">
 				<ul>
@@ -59,6 +59,8 @@
 						<li><a href="/">Home</a></li>
 					
 						<li><a href="/archives">Archives</a></li>
+					
+						<li><a href="/tags">tags</a></li>
 					
 						<li><a href="/about">About</a></li>
 					
@@ -89,7 +91,7 @@
 		<a href="https://plus.google.com/108932500160929600337?rel=author" title="Tenlee" target="_blank" itemprop="author">Tenlee</a>
 		
   <p class="article-time">
-    <time datetime="2015-06-09T07:40:29.000Z" itemprop="datePublished"> 发表于 2015-06-09</time>
+    <time datetime="2015-07-23T10:44:59.000Z" itemprop="datePublished"> 發表於 2015-07-23</time>
     
   </p>
 </header>
@@ -150,7 +152,7 @@
 		
 		
 		
-		<a href="https://www.zhihu.com/people/tenlee" target="_blank" class="icon-zhihu" title="知乎"></a>
+		<a href="http://www.zhihu.com/people/tenlee" target="_blank" class="icon-zhihu" title="知乎"></a>
 		
 		
 		<a href="https://plus.google.com/108932500160929600337?rel=author" target="_blank" class="icon-google_plus" title="Google+"></a>
@@ -174,6 +176,7 @@
         <script src="/js/jquery-2.0.3.min.js"></script>
 <script src="/js/jquery.imagesloaded.min.js"></script>
 <script src="/js/gallery.js"></script>
+<script src="/js/jquery.qrcode-0.12.0.min.js"></script>
 
 <script type="text/javascript">
 $(document).ready(function(){ 
@@ -230,8 +233,8 @@ $(document).ready(function(){
       tsina = $this.attr('data-tsina'),
       description = $this.attr('description');
   var html = [
-  '<a href="#" class="overlay" id="qrcode"></a>',
-  '<div class="qrcode clearfix"><span>扫描二维码分享到微信朋友圈</span><a class="qrclose" href="#nothing"></a><strong>Loading...Please wait</strong><img id="qrcode-pic" data-src="http://s.jiathis.com/qrcode.php?url=' + encodedUrl + '"/></div>',
+  '<div class="hoverqrcode clearfix"></div>',
+  '<a class="overlay" id="qrcode"></a>',
   '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
   '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
   '<a href="#qrcode" class="article-share-qrcode" title="微信"></a>',
@@ -240,14 +243,34 @@ $(document).ready(function(){
   '<span title="Share to"></span>'
   ].join('');
   $this.append(html);
-  $('.article-share-qrcode').click(function(){
-    var imgSrc = $('#qrcode-pic').attr('data-src');
-    $('#qrcode-pic').attr('src', imgSrc);
-    $('#qrcode-pic').load(function(){
-        $('.qrcode strong').text(' ');
-    });
+
+  $('.hoverqrcode').hide();
+
+  var myWidth = 0;
+  function updatehoverqrcode(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+    var qrsize = myWidth > 1024 ? 200:100;
+    var options = {render: 'image', size: qrsize, fill: '#2ca6cb', text: url, radius: 0.5, quiet: 1};
+    var p = $('.article-share-qrcode').position();
+    $('.hoverqrcode').empty().css('width', qrsize).css('height', qrsize)
+                          .css('left', p.left-qrsize/2+20).css('top', p.top-qrsize-10)
+                          .qrcode(options);
+  };
+  $(window).resize(function(){
+    $('.hoverqrcode').hide();
   });
-});     
+  $('.article-share-qrcode').click(function(){
+    updatehoverqrcode();
+    $('.hoverqrcode').toggle();
+  });
+  $('.article-share-qrcode').hover(function(){}, function(){
+      $('.hoverqrcode').hide();
+  });
+});   
 </script>
 
 
@@ -309,7 +332,7 @@ document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3
 <!-- Totop Begin -->
 
 	<div id="totop">
-	<a title="返回顶部"><img src="/img/scrollup.png"/></a>
+	<a title="返回頂部"><img src="/img/scrollup.png"/></a>
 	</div>
 	<script src="/js/totop.js"></script>
 
@@ -317,6 +340,35 @@ document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3
 
 <!-- MathJax Begin -->
 <!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
 
 
 <!-- MathJax End -->
