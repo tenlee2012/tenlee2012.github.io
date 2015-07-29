@@ -11,19 +11,16 @@
     
 
     
-    <meta name="description" content="题目链接：戳我题目大意：f(l, r)代表一个l，r区间内，符合任选i，j （l &amp;lt;= j &amp;lt;= r &amp;amp;&amp;amp; j != i），有$a{i}$ % $a{j}$ != 0的i的个数求 $\sum{i = 1}^n \sum{j = i}^n f(i, j) mod(10^9+7)$
-样例解释5  即为n，代表有n个数，n &amp;lt;= $10^5$1 2 3 4 5 分别为上">
+    <meta name="description" content="题目链接：戳我题目大意：f(l, r)代表一个l，r区间内，符合任选i，j （l &amp;lt;= j &amp;lt;= r &amp;amp;&amp;amp; j != i），有$a{i}$ % $a{j}$ != 0的i的个数求 $\sum{i = 1}^n \sum{j = i}^n f(i, j) mod(10^9+7)$">
 <meta property="og:type" content="article">
 <meta property="og:title" content="HDU 5288 OO’s Sequence(2015多校联合)">
 <meta property="og:url" content="http://tenlee2012.github.com/2015/07/23/HDU5288/index.html">
 <meta property="og:site_name" content="豪气干云">
-<meta property="og:description" content="题目链接：戳我题目大意：f(l, r)代表一个l，r区间内，符合任选i，j （l &amp;lt;= j &amp;lt;= r &amp;amp;&amp;amp; j != i），有$a{i}$ % $a{j}$ != 0的i的个数求 $\sum{i = 1}^n \sum{j = i}^n f(i, j) mod(10^9+7)$
-样例解释5  即为n，代表有n个数，n &amp;lt;= $10^5$1 2 3 4 5 分别为上">
-<meta property="og:updated_time" content="2015-07-29T09:20:32.000Z">
+<meta property="og:description" content="题目链接：戳我题目大意：f(l, r)代表一个l，r区间内，符合任选i，j （l &amp;lt;= j &amp;lt;= r &amp;amp;&amp;amp; j != i），有$a{i}$ % $a{j}$ != 0的i的个数求 $\sum{i = 1}^n \sum{j = i}^n f(i, j) mod(10^9+7)$">
+<meta property="og:updated_time" content="2015-07-29T12:14:05.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="HDU 5288 OO’s Sequence(2015多校联合)">
-<meta name="twitter:description" content="题目链接：戳我题目大意：f(l, r)代表一个l，r区间内，符合任选i，j （l &amp;lt;= j &amp;lt;= r &amp;amp;&amp;amp; j != i），有$a{i}$ % $a{j}$ != 0的i的个数求 $\sum{i = 1}^n \sum{j = i}^n f(i, j) mod(10^9+7)$
-样例解释5  即为n，代表有n个数，n &amp;lt;= $10^5$1 2 3 4 5 分别为上">
+<meta name="twitter:description" content="题目链接：戳我题目大意：f(l, r)代表一个l，r区间内，符合任选i，j （l &amp;lt;= j &amp;lt;= r &amp;amp;&amp;amp; j != i），有$a{i}$ % $a{j}$ != 0的i的个数求 $\sum{i = 1}^n \sum{j = i}^n f(i, j) mod(10^9+7)$">
 <link rel="publisher" href="108932500160929600337">
 
     
@@ -106,7 +103,7 @@
 		
 		</div>
 		
-		<h3 id="题目链接：">题目链接：</h3><h2 id="戳我"><a href="http://acm.hdu.edu.cn/showproblem.php?pid=5288" target="_blank" rel="external">戳我</a></h2><h3 id="题目大意：">题目大意：</h3><p><strong>f(l, r)</strong>代表一个l，r区间内，符合任选i，j <code>（l &lt;= j &lt;= r &amp;&amp; j != i）</code>，有$a<em>{i}$ % $a</em>{j}$ != 0的i的个数<br>求 $\sum<em>{i = 1}^n \sum</em>{j = i}^n f(i, j) mod(10^9+7)$</p>
+		<h3 id="题目链接：">题目链接：</h3><h2 id="戳我"><a href="http://acm.hdu.edu.cn/showproblem.php?pid=5288" target="_blank" rel="external">戳我</a></h2><h3 id="题目大意：">题目大意：</h3><p><strong>f(l, r)</strong>代表一个l，r区间内，符合任选i，j <code>（l &lt;= j &lt;= r &amp;&amp; j != i）</code>，有$a<em>{i}$ % $a</em>{j}$ != 0的i的个数<br>求 $\sum<em>{i = 1}^n \sum</em>{j = i}^n f(i, j) mod(10^9+7)$<br><a id="more"></a></p>
 <h3 id="样例解释">样例解释</h3><p><code>5</code>  即为n，代表有n个数，n &lt;= $10^5$<br><code>1 2 3 4 5</code> 分别为上面的 n 个数，0 &lt; $a_{i}$ &lt;= 10000<br>f(1,1) = {1} = 1; f(1,2) = {1} = 1; f(1,3) = {1} = 1; f(1,4) = {1} = 1; f(1,5) = {1} = 1<br>f(2,2) = {2} =1; f(2,3) = {2,3} = 2; f(2,4) = {2,3} = 2; f(2,5) = {2,3,5} = 3<br>f(3,3) = {3} = 1; f(3,4) = {3,4} = 2; f(3,5） = {3,4,5} = 3；<br>f(4,4) = {4} = 1; f(4, 5) = {4,5} = 2;<br>f(5,5) = {5} = 1;<br><code>故所有加起来为23</code></p>
 <h3 id="解题思路">解题思路</h3><p>分析：数组长度为$10^5$,而每个数不超多 10000<br>假设一个数的<code>位置是 pos 值为x</code>，那个在<code>x</code>左侧和x最近的属于x的因子的位置是l，在<code>x</code>右侧和x最近的属于x因子的位置是r，那么在<code>(l+1， r-1)</code>这个区间内，任选左区间一个位置ll，在任选右区间一个位置rr，那么x必为此区间符合条件的一个数<br>故 $num = (x-l)*(r-x)$<br>只需枚举每一个位置，极其l，r即可</p>
 <h4 id="思路：">思路：</h4><p>可以先预处理10000个数的每个数的因子，在枚举每一个位置的时候即可知道最左的因子和最右的因子了</p>
