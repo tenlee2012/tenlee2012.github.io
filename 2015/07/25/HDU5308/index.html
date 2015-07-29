@@ -1,17 +1,43 @@
-
- <!DOCTYPE HTML>
-<html lang="zh-CN">
+<!doctype html>
+<html class="theme-next use-motion ">
 <head>
-  <meta charset="UTF-8">
-  
-    <title>HDU 5308 I Wanna Become A 24-Point Master(2015多校联合) | 豪气干云</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
-    
-    <meta name="author" content="Tenlee">
     
 
-    
-    <meta name="description" content="题目链接：戳我
+<meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+  <link rel="stylesheet" type="text/css" href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5"/>
+
+
+
+  <link href='//fonts.googleapis.com/css?family=Lato:300,400,700,400italic&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+
+
+<link rel="stylesheet" type="text/css" href="/css/main.css?v=0.4.4"/>
+
+
+
+
+  <meta name="keywords" content="HDUOJ," />
+
+
+
+
+
+  <link rel="shorticon icon" type="image/x-icon" href="/favicon.ico?v=0.4.4" />
+
+
+<meta name="description" content="题目链接：戳我
 题目大意：给定一个n，则对应一个长度$2n-1$数组，此数组前 $n$ 个数全为 $n$, 最后一个数必须是24，即 第 2n-1 个数是24。通过把这n个数加减乘除，每个数都必须用一次，且只能一次，并且运算完的数也都得用一次。也就是做n-1次。输出过程 xi ? xj  第 i 个数与第 j 个数做 ? 运算 这种形式">
 <meta property="og:type" content="article">
 <meta property="og:title" content="HDU 5308 I Wanna Become A 24-Point Master(2015多校联合)">
@@ -25,510 +51,624 @@
 <meta name="twitter:title" content="HDU 5308 I Wanna Become A 24-Point Master(2015多校联合)">
 <meta name="twitter:description" content="题目链接：戳我
 题目大意：给定一个n，则对应一个长度$2n-1$数组，此数组前 $n$ 个数全为 $n$, 最后一个数必须是24，即 第 2n-1 个数是24。通过把这n个数加减乘除，每个数都必须用一次，且只能一次，并且运算完的数也都得用一次。也就是做n-1次。输出过程 xi ? xj  第 i 个数与第 j 个数做 ? 运算 这种形式">
-<link rel="publisher" href="108932500160929600337">
 
-    
-    <link rel="alternative" href="/atom.xml" title="豪气干云" type="application/atom+xml">
-    
-    
-    <link rel="icon" href="/img/favicon.ico">
-    
-    
-    <link rel="apple-touch-icon" href="/img/jacman.jpg">
-    <link rel="apple-touch-icon-precomposed" href="/img/jacman.jpg">
-    
-    <link rel="stylesheet" href="/css/style.css" type="text/css">
+
+<script type="text/javascript" id="hexo.configuration">
+  var CONFIG = {
+    scheme: '',
+    sidebar: 'post'
+  };
+</script>
+
+    <title> HDU 5308 I Wanna Become A 24-Point Master(2015多校联合) // 豪气干云 </title>
 </head>
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+<!--[if lte IE 8]>
+  <div style=' clear: both; height: 59px; padding:0 0 0 15px; position: relative;margin:0 auto;'>
+    <a href="http://windows.microsoft.com/en-US/internet-explorer/products/ie/home?ocid=ie6_countdown_bannercode">
+      <img src="http://7u2nvr.com1.z0.glb.clouddn.com/picouterie.jpg" border="0" height="42" width="820"
+           alt="You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today or use other browser ,like chrome firefox safari."
+           style='margin-left:auto;margin-right:auto;display: block;'/>
+    </a>
+  </div>
+<![endif]-->
 
-  <body>
-    <header>
-      
-<div>
-		
-			<div id="imglogo">
-				<a href="/"><img src="/img/logo.png" alt="豪气干云" title="豪气干云"/></a>
-			</div>
-			
-			<div id="textlogo">
-				<h1 class="site-name"><a href="/" title="豪气干云">豪气干云</a></h1>
-				<h2 class="blog-motto"></h2>
-			</div>
-			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜单">
-			</a></div>
-			<nav class="animated">
-				<ul>
-					<ul>
-					 
-						<li><a href="/">Home</a></li>
-					
-						<li><a href="/archives">Archives</a></li>
-					
-						<li><a href="/tags">tags</a></li>
-					
-						<li><a href="/about">About</a></li>
-					
-					<li>
- 					
-					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
-						<label>Search</label>
-						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="搜索" />
-						<input type="hidden" name="q" value="site:tenlee2012.github.com">
-					</form>
-					
-					</li>
-				</ul>
-			</nav>			
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?a1eb6e34b6f3af6aeabbc1527c36760f";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+<div class="container one-column page-post-detail">
+    <div class="headband"></div>
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+        <div class="header-inner"><h1 class="site-meta">
+  <span class="logo-line-before"><i></i></span>
+  <a href="/" class="brand" rel="start">
+      <span class="logo">
+        <i class="icon-logo"></i>
+      </span>
+      <span class="site-title">豪气干云</span>
+  </a>
+  <span class="logo-line-after"><i></i></span>
+</h1>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
 </div>
-    </header>
-    <div id="container">
-      <div id="main" class="post" itemscope itemprop="blogPost">
+
+<nav class="site-nav">
   
-	<article itemprop="articleBody"> 
-		<header class="article-info clearfix">
-  <h1 itemprop="name">
+
+  
+    <ul id="menu" class="menu ">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            <i class="menu-item-icon icon-home"></i> <br />
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            <i class="menu-item-icon icon-archives"></i> <br />
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            <i class="menu-item-icon icon-tags"></i> <br />
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            <i class="menu-item-icon icon-about"></i> <br />
+            关于
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+        </div>
+    </header>
+
+    <main id="main" class="main">
+        <div class="main-inner">
+            <div id="content" class="content">
+                
+
+  <div id="posts" class="posts-expand">
     
-      <a href="/2015/07/25/HDU5308/" title="HDU 5308 I Wanna Become A 24-Point Master(2015多校联合)" itemprop="url">HDU 5308 I Wanna Become A 24-Point Master(2015多校联合)</a>
-  </h1>
-  <p class="article-author">By
-       
-		<a href="https://plus.google.com/108932500160929600337?rel=author" title="Tenlee" target="_blank" itemprop="author">Tenlee</a>
-		
-  <p class="article-time">
-    <time datetime="2015-07-25T09:16:17.000Z" itemprop="datePublished"> 发表于 2015-07-25</time>
-    
-  </p>
-</header>
-	<div class="article-content">
-		
-		<div id="toc" class="toc-article">
-			<strong class="toc-title">文章目录</strong>
-		
-			<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#题目链接："><span class="toc-number">1.</span> <span class="toc-text">题目链接：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#题目大意："><span class="toc-number">2.</span> <span class="toc-text">题目大意：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#样例解释："><span class="toc-number">3.</span> <span class="toc-text">样例解释：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#解题思路："><span class="toc-number">4.</span> <span class="toc-text">解题思路：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#代码"><span class="toc-number">5.</span> <span class="toc-text">代码</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#标程"><span class="toc-number">5.1.</span> <span class="toc-text">标程</span></a></li></ol></li></ol>
-		
-		</div>
-		
-		<h3 id="题目链接：">题目链接：</h3><p><a href="http://acm.hdu.edu.cn/showproblem.php?pid=5308" target="_blank" rel="external">戳我</a></p>
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      
+      
+        <h1 class="post-title" itemprop="name headline">
+          
+          
+            
+              HDU 5308 I Wanna Become A 24-Point Master(2015多校联合)
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          发表于
+          <time itemprop="dateCreated" datetime="2015-07-25T17:16:17+08:00" content="2015-07-25">
+            2015-07-25
+          </time>
+        </span>
+
+        
+
+        
+          
+            <span class="post-comments-count">
+              &nbsp; | &nbsp;
+              <a href="/2015/07/25/HDU5308/#comments" itemprop="discussionUrl">
+                <span class="post-comments-count ds-thread-count" data-thread-key="2015/07/25/HDU5308/" itemprop="commentsCount"></span>
+              </a>
+            </span>
+          
+        
+      </div>
+    </header>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        <span itemprop="articleBody"><h3 id="题目链接：">题目链接：</h3><p><a href="http://acm.hdu.edu.cn/showproblem.php?pid=5308" target="_blank" rel="external">戳我</a></p>
 <h3 id="题目大意：">题目大意：</h3><p>给定一个n，则对应一个长度$2<em>n-1$数组，此数组前 $n$ 个数全为 $n$, 最后一个数必须是24，即 第 2</em>n-1 个数是24。<br>通过把这n个数加减乘除，每个数都必须用一次，且只能一次，并且运算完的数也都得用一次。也就是做n-1次。<br>输出过程 xi ? xj  第 i 个数与第 j 个数做 ? 运算 这种形式<br><a id="more"></a></p>
 <h3 id="样例解释：">样例解释：</h3><p><code>4</code>       n = 4 即$a<a href="http://acm.hdu.edu.cn/showproblem.php?pid=5308" target="_blank" rel="external">1</a>=4,a<a href="http://files.cnblogs.com/files/tenlee/2009.ico" target="_blank" rel="external">2</a>=4,a[3]=4,a[4]=4$<br><code>1 * 2</code>   表示 $a[5] = a<a href="http://acm.hdu.edu.cn/showproblem.php?pid=5308" target="_blank" rel="external">1</a> * a<a href="http://files.cnblogs.com/files/tenlee/2009.ico" target="_blank" rel="external">2</a> = 16$<br><code>5 + 3</code>   表示 $a[6] = a[5] + a[3] = 20$<br><code>6 + 4</code>   表示 $a[7] = a[6] + a[4] = 24$<br>每个数都用了一次，且是 n - 1 次运算，每次运算的数均用上了</p>
 <h3 id="解题思路：">解题思路：</h3><p>官方题解：<br><img src="http://files.cnblogs.com/files/tenlee/2009.ico" alt="此处输入图片的描述"></p>
 <h3 id="代码">代码</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//Author LJH</span></span><br><span class="line"><span class="comment">//www.cnblogs.com/tenlee</span></span><br><span class="line"><span class="preprocessor">#<span class="keyword">include</span> &lt;cstdio&gt;</span></span><br><span class="line"><span class="preprocessor">#<span class="keyword">include</span> &lt;cstdlib&gt;</span></span><br><span class="line"><span class="preprocessor">#<span class="keyword">include</span> &lt;cstring&gt;</span></span><br><span class="line"><span class="preprocessor">#<span class="keyword">include</span> &lt;cctype&gt;</span></span><br><span class="line"><span class="preprocessor">#<span class="keyword">include</span> &lt;cmath&gt;</span></span><br><span class="line"><span class="preprocessor">#<span class="keyword">include</span> &lt;algorithm&gt;</span></span><br><span class="line"><span class="preprocessor">#<span class="keyword">include</span> &lt;vector&gt;</span></span><br><span class="line"><span class="preprocessor">#<span class="keyword">include</span> &lt;queue&gt;</span></span><br><span class="line"><span class="preprocessor">#<span class="keyword">include</span> &lt;stack&gt;</span></span><br><span class="line"><span class="preprocessor">#<span class="keyword">include</span> &lt;map&gt;</span></span><br><span class="line"><span class="preprocessor">#<span class="keyword">define</span> clc(a, b) memset(a, b, sizeof(a))</span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> inf = <span class="number">0x3f</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> INF = <span class="number">0x3f3f3f3f</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> maxn = <span class="number">1e5</span>+<span class="number">5</span>;</span><br><span class="line"><span class="keyword">int</span> n;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">n15</span><span class="params">()</span></span><br><span class="line"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> i;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"1 + 2\n"</span>);</span><br><span class="line">    <span class="keyword">for</span>(i = <span class="number">1</span>; i &lt; <span class="number">2</span>; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"%d + %d\n"</span>, n+i, i+<span class="number">2</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%d / 4\n"</span>, n+<span class="number">2</span>); <span class="comment">//n+3 = 3</span></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"5 + 6\n"</span>); <span class="comment">// n + 4</span></span><br><span class="line">    <span class="keyword">for</span>(i = <span class="number">7</span>;i &lt;= <span class="number">12</span>; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"%d + %d\n"</span>, i, n+i-<span class="number">3</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%d / %d\n"</span>, n+<span class="number">10</span>, <span class="number">13</span>); <span class="comment">//n+11  8</span></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%d * %d\n"</span>, n+<span class="number">3</span>, n+<span class="number">11</span>); <span class="comment">//n+12 3*8</span></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"14 - 15\n"</span>);<span class="comment">//n+13</span></span><br><span class="line">    <span class="keyword">for</span>(i = n+<span class="number">14</span>; i &lt;= <span class="number">2</span>*n-<span class="number">2</span>; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"%d * %d\n"</span>, i-n+<span class="number">2</span>, i-<span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%d + %d\n"</span>, n+<span class="number">12</span>, <span class="number">2</span>*n-<span class="number">2</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">n13</span><span class="params">()</span></span><br><span class="line"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> i;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"1 + 2\n"</span>);</span><br><span class="line">    <span class="keyword">for</span>(i = <span class="number">1</span>; i &lt; <span class="number">2</span>; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"%d + %d\n"</span>, n+i, i+<span class="number">2</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%d / 4\n"</span>, n+<span class="number">2</span>); <span class="comment">//n+3 = 3</span></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"5 + 6\n"</span>); <span class="comment">// n + 4</span></span><br><span class="line">    <span class="keyword">for</span>(i = <span class="number">7</span>;i &lt;= <span class="number">12</span>; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"%d + %d\n"</span>, i, n+i-<span class="number">3</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%d / %d\n"</span>, n+<span class="number">10</span>, <span class="number">13</span>); <span class="comment">//n+11  8</span></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%d * %d\n"</span>, n+<span class="number">3</span>, n+<span class="number">11</span>); <span class="comment">//n+12 3*8</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">n14</span><span class="params">()</span></span><br><span class="line"></span>&#123;</span><br><span class="line">    <span class="built_in">puts</span>(<span class="string">"1 + 2"</span>); <span class="comment">//15 2*14</span></span><br><span class="line">    <span class="built_in">puts</span>(<span class="string">"3 / 4"</span>); <span class="comment">//16 1</span></span><br><span class="line">    <span class="built_in">puts</span>(<span class="string">"5 / 6"</span>); <span class="comment">//17 1</span></span><br><span class="line">    <span class="built_in">puts</span>(<span class="string">"16 + 17"</span>);<span class="comment">//18 2</span></span><br><span class="line">    <span class="built_in">puts</span>(<span class="string">"7 / 8"</span>); <span class="comment">//19 1</span></span><br><span class="line">    <span class="built_in">puts</span>(<span class="string">"9 / 10"</span>); <span class="comment">//20 1</span></span><br><span class="line">    <span class="built_in">puts</span>(<span class="string">"19 + 20"</span>); <span class="comment">//21 2</span></span><br><span class="line">    <span class="built_in">puts</span>(<span class="string">"18 + 21"</span>);<span class="comment">//22 4</span></span><br><span class="line">    <span class="built_in">puts</span>(<span class="string">"15 - 22"</span>); <span class="comment">//23 24</span></span><br><span class="line">    <span class="built_in">puts</span>(<span class="string">"11 - 12"</span>);<span class="comment">//24 0</span></span><br><span class="line">    <span class="built_in">puts</span>(<span class="string">"13 - 14"</span>); <span class="comment">//25 0</span></span><br><span class="line">    <span class="built_in">puts</span>(<span class="string">"24 + 25"</span>); <span class="comment">//26 0</span></span><br><span class="line">    <span class="built_in">puts</span>(<span class="string">"26 + 23"</span>);<span class="comment">// 27</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">n4</span><span class="params">()</span></span><br><span class="line"></span>&#123;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"1 * 2\n"</span>); </span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"3 + 5\n"</span>); </span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"4 + 6\n"</span>); </span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">n5</span><span class="params">()</span></span><br><span class="line"></span>&#123;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"1 / 2\n"</span>); </span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"6 / 3\n"</span>); </span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"4 - 7\n"</span>); </span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"5 * 8\n"</span>); </span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">n6</span><span class="params">()</span></span><br><span class="line"></span>&#123;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"1 * 2\n"</span>); </span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"7 - 3\n"</span>); </span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"8 - 4\n"</span>); </span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"9 - 5\n"</span>); </span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"10 + 6\n"</span>); </span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">n7</span><span class="params">()</span></span><br><span class="line"></span>&#123;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"1 * 2\n"</span>); </span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"3 / 4\n"</span>); </span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"5 + 6\n"</span>); </span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"8 - 9\n"</span>); </span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"11 / 10\n"</span>); </span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"12 * 7\n"</span>); </span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">n8</span><span class="params">()</span></span><br><span class="line"></span>&#123;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"1 + 2\n"</span>); </span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"3 + 9\n"</span>); </span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"4 - 5\n"</span>); </span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"6 * 11\n"</span>); </span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"7 * 12\n"</span>);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"8 * 13\n"</span>); </span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"10 + 14\n"</span>); </span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">n9</span><span class="params">()</span></span><br><span class="line"></span>&#123;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"1 + 2\n"</span>); </span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"3 + 10\n"</span>); </span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"4 / 5\n"</span>); </span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"6 / 7\n"</span>); </span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"8 / 9\n"</span>);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"11 - 12\n"</span>); </span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"15 - 13\n"</span>); </span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"16 - 14\n"</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">n10</span><span class="params">()</span></span><br><span class="line"></span>&#123;</span><br><span class="line">    <span class="built_in">puts</span>(<span class="string">"1 + 2"</span>); <span class="comment">//11 20</span></span><br><span class="line">    <span class="built_in">puts</span>(<span class="string">"3 / 4"</span>);<span class="comment">//12 1</span></span><br><span class="line">    <span class="built_in">puts</span>(<span class="string">"5 / 6"</span>);<span class="comment">// 13 1</span></span><br><span class="line">    <span class="built_in">puts</span>(<span class="string">"7 / 8"</span>);<span class="comment">//14 1</span></span><br><span class="line">    <span class="built_in">puts</span>(<span class="string">"9 / 10"</span>);<span class="comment">//15 1</span></span><br><span class="line">    <span class="built_in">puts</span>(<span class="string">"11 + 12"</span>);<span class="comment">//16 21</span></span><br><span class="line">    <span class="built_in">puts</span>(<span class="string">"16 + 13"</span>);<span class="comment">//17 22</span></span><br><span class="line">    <span class="built_in">puts</span>(<span class="string">"17 + 14"</span>);<span class="comment">//18 23</span></span><br><span class="line">    <span class="built_in">puts</span>(<span class="string">"18 + 15"</span>);<span class="comment">//18 24</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">n11</span><span class="params">()</span></span><br><span class="line"></span>&#123;</span><br><span class="line">    <span class="built_in">puts</span>(<span class="string">"1 + 2"</span>); <span class="comment">//12 22</span></span><br><span class="line">    <span class="built_in">puts</span>(<span class="string">"12 / 3"</span>); <span class="comment">//13 2</span></span><br><span class="line">    <span class="built_in">puts</span>(<span class="string">"4 + 5"</span>);<span class="comment">//14 22</span></span><br><span class="line">    <span class="built_in">puts</span>(<span class="string">"14 + 13"</span>); <span class="comment">//15 24</span></span><br><span class="line">    <span class="built_in">puts</span>(<span class="string">"6 - 7"</span>);<span class="comment">//16 0</span></span><br><span class="line">    <span class="built_in">puts</span>(<span class="string">"8 - 9"</span>); <span class="comment">//17 0</span></span><br><span class="line">    <span class="built_in">puts</span>(<span class="string">"10 - 11"</span>); <span class="comment">// 18 0</span></span><br><span class="line">    <span class="built_in">puts</span>(<span class="string">"16 * 17"</span>);<span class="comment">//19</span></span><br><span class="line">    <span class="built_in">puts</span>(<span class="string">"18 * 19"</span>);<span class="comment">//20</span></span><br><span class="line">    <span class="built_in">puts</span>(<span class="string">"20 + 15"</span>);<span class="comment">//21</span></span><br><span class="line">    </span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">n12</span><span class="params">()</span></span><br><span class="line"></span>&#123;</span><br><span class="line">    <span class="built_in">puts</span>(<span class="string">"1 + 2"</span>); <span class="comment">// 13 24</span></span><br><span class="line">    <span class="built_in">puts</span>(<span class="string">"3 - 4"</span>); <span class="comment">// 14</span></span><br><span class="line">    <span class="built_in">puts</span>(<span class="string">"14 * 5"</span>); <span class="comment">//15</span></span><br><span class="line">    <span class="built_in">puts</span>(<span class="string">"15 * 6"</span>); <span class="comment">//16</span></span><br><span class="line">    <span class="built_in">puts</span>(<span class="string">"16 * 7"</span>);<span class="comment">//17</span></span><br><span class="line">    <span class="built_in">puts</span>(<span class="string">"17 * 8"</span>);<span class="comment">//18</span></span><br><span class="line">    <span class="built_in">puts</span>(<span class="string">"18 * 9"</span>);<span class="comment">//19</span></span><br><span class="line">    <span class="built_in">puts</span>(<span class="string">"19 * 10"</span>);<span class="comment">//20</span></span><br><span class="line">    <span class="built_in">puts</span>(<span class="string">"20 * 11"</span>);<span class="comment">//21</span></span><br><span class="line">    <span class="built_in">puts</span>(<span class="string">"21 * 12"</span>);<span class="comment">//22</span></span><br><span class="line">    <span class="built_in">puts</span>(<span class="string">"22 + 13"</span>);<span class="comment">//23</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span><br><span class="line"></span>&#123;</span><br><span class="line">    <span class="keyword">while</span>(~<span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;n))</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span>(n &lt; <span class="number">4</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="built_in">puts</span>(<span class="string">"-1"</span>);</span><br><span class="line">            <span class="keyword">continue</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(n == <span class="number">4</span>) n4();</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span>(n == <span class="number">5</span>) n5();</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span>(n == <span class="number">6</span>) n6();</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span>(n == <span class="number">7</span>) n7();</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span>(n == <span class="number">8</span>) n8();</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span>(n == <span class="number">9</span>) n9();</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span>(n == <span class="number">10</span>) n10();</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span>(n == <span class="number">11</span>) n11();</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span>(n == <span class="number">12</span>) n12();</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span>(n == <span class="number">13</span>) n13();</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span>(n == <span class="number">14</span>) n14();</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">        &#123;</span><br><span class="line">            n15();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h4 id="标程">标程</h4><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br></pre></td><td class="code"><pre><span class="line"><span class="preprocessor">#<span class="keyword">include</span>&lt;iostream&gt;</span></span><br><span class="line"><span class="preprocessor">#<span class="keyword">include</span>&lt;cstring&gt;</span></span><br><span class="line"><span class="preprocessor">#<span class="keyword">include</span>&lt;cmath&gt;</span></span><br><span class="line"><span class="preprocessor">#<span class="keyword">include</span>&lt;algorithm&gt;</span></span><br><span class="line"><span class="preprocessor">#<span class="keyword">include</span>&lt;cstdio&gt;</span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">int</span> n;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line"><span class="comment">//	freopen("data.in","r",stdin);</span></span><br><span class="line"><span class="comment">//	freopen("dataa.out","w",stdout);</span></span><br><span class="line">	<span class="keyword">while</span> (<span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;n)!=EOF)&#123;</span><br><span class="line">		<span class="keyword">if</span> (n&gt;=<span class="number">15</span>)&#123;</span><br><span class="line">			<span class="built_in">printf</span>(<span class="string">"1 + 2\n"</span>); <span class="built_in">printf</span>(<span class="string">"3 + 4\n"</span>); <span class="built_in">printf</span>(<span class="string">"5 + 6\n"</span>); <span class="built_in">printf</span>(<span class="string">"7 + 8\n"</span>); <span class="built_in">printf</span>(<span class="string">"%d + 9\n"</span>,n+<span class="number">1</span>);</span><br><span class="line">			<span class="built_in">printf</span>(<span class="string">"%d / 10\n"</span>,n+<span class="number">2</span>); <span class="built_in">printf</span>(<span class="string">"%d / 11\n"</span>,n+<span class="number">3</span>); <span class="built_in">printf</span>(<span class="string">"%d / 12\n"</span>,n+<span class="number">4</span>); <span class="built_in">printf</span>(<span class="string">"%d / 13\n"</span>,n+<span class="number">5</span>);</span><br><span class="line">			<span class="built_in">printf</span>(<span class="string">"%d * %d\n"</span>,n+<span class="number">6</span>,n+<span class="number">7</span>); <span class="built_in">printf</span>(<span class="string">"%d * %d\n"</span>,n+<span class="number">8</span>,n+<span class="number">9</span>); <span class="built_in">printf</span>(<span class="string">"%d * %d\n"</span>,n+<span class="number">10</span>,n+<span class="number">11</span>); <span class="built_in">printf</span>(<span class="string">"14 - 15\n"</span>);</span><br><span class="line">			<span class="keyword">int</span> now=n+<span class="number">13</span>; <span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">16</span>;i&lt;=n;i++)&#123;<span class="built_in">printf</span>(<span class="string">"%d * %d\n"</span>,i,now); now++;&#125; <span class="built_in">printf</span>(<span class="string">"%d + %d\n"</span>,n+<span class="number">12</span>,now); <span class="keyword">continue</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">if</span> (n&gt;=<span class="number">12</span>)&#123;</span><br><span class="line">			<span class="built_in">printf</span>(<span class="string">"1 + 2\n"</span>);</span><br><span class="line">			<span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n*<span class="number">2</span>-<span class="number">24</span>;i++) <span class="built_in">printf</span>(<span class="string">"%d / %d\n"</span>,i*<span class="number">2</span>+<span class="number">1</span>,i*<span class="number">2</span>+<span class="number">2</span>); <span class="keyword">int</span> num=n*<span class="number">4</span>-<span class="number">46</span>;</span><br><span class="line">			<span class="keyword">int</span> now=n+<span class="number">1</span>+n*<span class="number">2</span>-<span class="number">24</span>;</span><br><span class="line">			<span class="keyword">if</span> (n!=<span class="number">12</span>)&#123;</span><br><span class="line">				<span class="built_in">printf</span>(<span class="string">"%d - %d\n"</span>,n+<span class="number">1</span>,n+<span class="number">2</span>); now++;</span><br><span class="line">				<span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">2</span>;i&lt;=n*<span class="number">2</span>-<span class="number">24</span>;i++)&#123;<span class="built_in">printf</span>(<span class="string">"%d - %d\n"</span>,now,n+<span class="number">1</span>+i); now++;&#125; </span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">int</span> k1=now;</span><br><span class="line">			<span class="built_in">printf</span>(<span class="string">"%d - %d\n"</span>,num+<span class="number">1</span>,num+<span class="number">2</span>); num+=<span class="number">3</span>; now++;</span><br><span class="line">			<span class="keyword">for</span> (<span class="keyword">int</span> i=num;i&lt;=n;i++)&#123;<span class="built_in">printf</span>(<span class="string">"%d * %d\n"</span>,i,now); now++;&#125;</span><br><span class="line">			<span class="built_in">printf</span>(<span class="string">"%d + %d\n"</span>,k1,now); <span class="keyword">continue</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">if</span> (n&gt;=<span class="number">10</span>)&#123;</span><br><span class="line">			<span class="built_in">printf</span>(<span class="string">"1 + 2\n"</span>);</span><br><span class="line">			<span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=<span class="number">24</span>-n*<span class="number">2</span>;i++) <span class="built_in">printf</span>(<span class="string">"%d / %d\n"</span>,<span class="number">1</span>+<span class="number">2</span>*i,<span class="number">2</span>+<span class="number">2</span>*i);</span><br><span class="line">			<span class="built_in">printf</span>(<span class="string">"%d + %d\n"</span>,n+<span class="number">1</span>,n+<span class="number">2</span>); <span class="keyword">int</span> now=n+<span class="number">26</span>-n*<span class="number">2</span>;</span><br><span class="line">			<span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">2</span>;i&lt;=<span class="number">24</span>-n*<span class="number">2</span>;i++) &#123;<span class="built_in">printf</span>(<span class="string">"%d + %d\n"</span>,n+<span class="number">1</span>+i,now); now++;&#125;</span><br><span class="line">			<span class="keyword">if</span> (n==<span class="number">10</span>) <span class="keyword">continue</span>;</span><br><span class="line">			<span class="built_in">printf</span>(<span class="string">"7 - 8\n"</span>); <span class="built_in">printf</span>(<span class="string">"17 * 9\n"</span>); <span class="built_in">printf</span>(<span class="string">"18 * 10\n"</span>); <span class="built_in">printf</span>(<span class="string">"19 * 11\n"</span>); <span class="built_in">printf</span>(<span class="string">"20 + 16\n"</span>); <span class="keyword">continue</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">if</span> (n==<span class="number">9</span>)&#123;</span><br><span class="line">			<span class="built_in">printf</span>(<span class="string">"1 + 2\n"</span>); <span class="built_in">printf</span>(<span class="string">"3 + 10\n"</span>); <span class="built_in">printf</span>(<span class="string">"4 / 5\n"</span>); <span class="built_in">printf</span>(<span class="string">"6 / 7\n"</span>); <span class="built_in">printf</span>(<span class="string">"8 / 9\n"</span>);</span><br><span class="line">			<span class="built_in">printf</span>(<span class="string">"11 - 12\n"</span>); <span class="built_in">printf</span>(<span class="string">"15 - 13\n"</span>); <span class="built_in">printf</span>(<span class="string">"16 - 14\n"</span>); <span class="keyword">continue</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">if</span> (n==<span class="number">8</span>)&#123;</span><br><span class="line">			<span class="built_in">printf</span>(<span class="string">"1 + 2\n"</span>); <span class="built_in">printf</span>(<span class="string">"3 + 9\n"</span>); <span class="built_in">printf</span>(<span class="string">"4 - 5\n"</span>); <span class="built_in">printf</span>(<span class="string">"6 * 11\n"</span>); <span class="built_in">printf</span>(<span class="string">"7 * 12\n"</span>);</span><br><span class="line">			<span class="built_in">printf</span>(<span class="string">"8 * 13\n"</span>); <span class="built_in">printf</span>(<span class="string">"10 + 14\n"</span>); <span class="keyword">continue</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">if</span> (n==<span class="number">7</span>)&#123;</span><br><span class="line">			<span class="built_in">printf</span>(<span class="string">"1 * 2\n"</span>); <span class="built_in">printf</span>(<span class="string">"3 / 4\n"</span>); <span class="built_in">printf</span>(<span class="string">"5 + 6\n"</span>); <span class="built_in">printf</span>(<span class="string">"8 - 9\n"</span>); <span class="built_in">printf</span>(<span class="string">"11 / 10\n"</span>); <span class="built_in">printf</span>(<span class="string">"12 * 7\n"</span>); <span class="keyword">continue</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">if</span> (n&lt;=<span class="number">3</span>)&#123;<span class="built_in">printf</span>(<span class="string">"-1\n"</span>); <span class="keyword">continue</span>;&#125;</span><br><span class="line">		<span class="keyword">if</span> (n==<span class="number">6</span>)&#123;</span><br><span class="line">			<span class="built_in">printf</span>(<span class="string">"1 * 2\n"</span>); <span class="built_in">printf</span>(<span class="string">"7 - 3\n"</span>); <span class="built_in">printf</span>(<span class="string">"8 - 4\n"</span>); <span class="built_in">printf</span>(<span class="string">"9 - 5\n"</span>); <span class="built_in">printf</span>(<span class="string">"10 + 6\n"</span>); <span class="keyword">continue</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">if</span> (n==<span class="number">5</span>)&#123;</span><br><span class="line">			<span class="built_in">printf</span>(<span class="string">"1 / 2\n"</span>); <span class="built_in">printf</span>(<span class="string">"6 / 3\n"</span>); <span class="built_in">printf</span>(<span class="string">"4 - 7\n"</span>); <span class="built_in">printf</span>(<span class="string">"5 * 8\n"</span>); <span class="keyword">continue</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">if</span> (n==<span class="number">4</span>)&#123;</span><br><span class="line">			<span class="built_in">printf</span>(<span class="string">"1 * 2\n"</span>); <span class="built_in">printf</span>(<span class="string">"3 + 5\n"</span>); <span class="built_in">printf</span>(<span class="string">"4 + 6\n"</span>); <span class="keyword">continue</span>;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-  
-	</div>
-		<footer class="article-footer clearfix">
-<div class="article-catetags">
-
-
-  <div class="article-tags">
-  
-  <span></span> <a href="/tags/HDUOJ/">HDUOJ</a>
-  </div>
-
-</div>
-
-
-
-	<div class="article-share" id="share">
-	
-	  <div data-url="http://tenlee2012.github.com/2015/07/25/HDU5308/" data-title="HDU 5308 I Wanna Become A 24-Point Master(2015多校联合) | 豪气干云" data-tsina="null" class="share clearfix">
-	  </div>
-	
-	</div>
-
-
-</footer>
-
-   	       
-	</article>
-	
-<nav class="article-nav clearfix">
- 
- <div class="prev" >
- <a href="/2015/07/28/HDU5317/" title="HDU 5317 RGCDQ(2015多校联合)">
-  <strong>上一篇：</strong><br/>
-  <span>
-  HDU 5317 RGCDQ(2015多校联合)</span>
-</a>
-</div>
-
-
-<div class="next">
-<a href="/2015/07/25/HDU5301/"  title="HDU 5301 Buildings(2015多校联合)">
- <strong>下一篇：</strong><br/> 
- <span>HDU 5301 Buildings(2015多校联合)
 </span>
-</a>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/HDUOJ/" rel="tag">#HDUOJ</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2015/07/28/HDU5317/" rel="prev">HDU 5317 RGCDQ(2015多校联合)</a>
+            
+          </div>
+
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2015/07/25/HDU5301/" rel="next">HDU 5301 Buildings(2015多校联合)</a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <div class="ds-share flat" data-thread-key="2015/07/25/HDU5308/"
+     data-title="HDU 5308 I Wanna Become A 24-Point Master(2015多校联合)"
+     data-content=""
+     data-url="http://tenlee2012.github.com/2015/07/25/HDU5308/">
+  <div class="ds-share-inline">
+    <ul  class="ds-share-icons-16">
+
+      <li data-toggle="ds-share-icons-more"><a class="ds-more" href="javascript:void(0);">分享到：</a></li>
+      <li><a class="ds-weibo" href="javascript:void(0);" data-service="weibo">微博</a></li>
+      <li><a class="ds-qzone" href="javascript:void(0);" data-service="qzone">QQ空间</a></li>
+      <li><a class="ds-qqt" href="javascript:void(0);" data-service="qqt">腾讯微博</a></li>
+      <li><a class="ds-wechat" href="javascript:void(0);" data-service="wechat">微信</a></li>
+
+    </ul>
+    <div class="ds-share-icons-more">
+    </div>
+  </div>
 </div>
-
-</nav>
-
-	
-<section id="comments" class="comment">
-	<div class="ds-thread" data-thread-key="2015/07/25/HDU5308/" data-title="HDU 5308 I Wanna Become A 24-Point Master(2015多校联合)" data-url="http://tenlee2012.github.com/2015/07/25/HDU5308/"></div>
-</section>
-
-
-</div>  
-      <div class="openaside"><a class="navbutton" href="#" title="显示侧边栏"></a></div>
-
-  <div id="toc" class="toc-aside">
-  <strong class="toc-title">文章目录</strong>
- 
- <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#题目链接："><span class="toc-number">1.</span> <span class="toc-text">题目链接：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#题目大意："><span class="toc-number">2.</span> <span class="toc-text">题目大意：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#样例解释："><span class="toc-number">3.</span> <span class="toc-text">样例解释：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#解题思路："><span class="toc-number">4.</span> <span class="toc-text">解题思路：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#代码"><span class="toc-number">5.</span> <span class="toc-text">代码</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#标程"><span class="toc-number">5.1.</span> <span class="toc-text">标程</span></a></li></ol></li></ol>
- 
+      
+    </div>
   </div>
 
-<div id="asidepart">
-<div class="closeaside"><a class="closebutton" href="#" title="隐藏侧边栏"></a></div>
-<aside class="clearfix">
 
+            </div>
+
+            
+
+            
+              <div class="comments" id="comments">
+                
+                  <div class="ds-thread" data-thread-key="2015/07/25/HDU5308/"
+                       data-title="HDU 5308 I Wanna Become A 24-Point Master(2015多校联合)" data-url="http://tenlee2012.github.com/2015/07/25/HDU5308/">
+                  </div>
+                
+              </div>
+            
+        </div>
+
+        
   
-
-  
-<div class="tagslist">
-	<p class="asidetitle">标签</p>
-		<ul class="clearfix">
-		
-			
-				<li><a href="/tags/HDUOJ/" title="HDUOJ">HDUOJ<sup>8</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/Python-Django-Blog/" title="Python Django Blog">Python Django Blog<sup>1</sup></a></li>
-			
-		
-		</ul>
-</div>
-
-
-  <div class="linkslist">
-  <p class="asidetitle">友情链接</p>
-    <ul>
-        
-          <li>
-            
-            	<a href="https://coderq.com" target="_blank" title="一个面向程序员交流分享的新一代社区">码农圈</a>
-            
-          </li>
-        
-          <li>
-            
-            	<a href="http://glgoo.com" target="_blank" title="国内谷歌">国内谷歌</a>
-            
-          </li>
-        
-          <li>
-            
-            	<a href="http://www.cnblogs.com/tenlee" target="_blank" title="tenlee&#39;s Blog">tenlee&#39;s Blog</a>
-            
-          </li>
-        
-          <li>
-            
-            	<a href="http://wuchong.me" target="_blank" title="Jark&#39;s Blog">Jark&#39;s Blog</a>
-            
-          </li>
-        
-          <li>
-            
-            	<a href="http://jzqt.github.io" target="_blank" title="JZQT&#39;s Blog">JZQT&#39;s Blog</a>
-            
-          </li>
-        
-    </ul>
-</div>
-
-  
-
-
-  <div class="rsspart">
-	<a href="/atom.xml" target="_blank" title="rss">RSS 订阅</a>
-</div>
-
-</aside>
-</div>
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
     </div>
-    <footer><div id="footer" >
-	
-	<div class="line">
-		<span></span>
-		<div class="author"></div>
-	</div>
-	
-	
-	<section class="info">
-		<p> Hello ,I&#39;m tenlee. <br/>
-			This is my blog,believe it or not.</p>
-	</section>
-	 
-	<div class="social-font" class="clearfix">
-		
-		<a href="http://weibo.com/tenlee2012" target="_blank" class="icon-weibo" title="微博"></a>
-		
-		
-		
-		
-		
-		
-		
-		
-		<a href="http://www.zhihu.com/people/tenlee" target="_blank" class="icon-zhihu" title="知乎"></a>
-		
-		
-		<a href="https://plus.google.com/108932500160929600337?rel=author" target="_blank" class="icon-google_plus" title="Google+"></a>
-		
-		
-		<a href="mailto:tenlee2012@163.com" target="_blank" class="icon-email" title="Email Me"></a>
-		
-	</div>
-			
-		
+  </div>
 
-		<p class="copyright">
-		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2015 
-		
-		<a href="/about" target="_blank" title="Tenlee">Tenlee</a>
-		
-		
-		</p>
-</div>
-</footer>
-    <script src="/js/jquery-2.0.3.min.js"></script>
-<script src="/js/jquery.imagesloaded.min.js"></script>
-<script src="/js/gallery.js"></script>
-<script src="/js/jquery.qrcode-0.12.0.min.js"></script>
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
 
-<script type="text/javascript">
-$(document).ready(function(){ 
-  $('.navbar').click(function(){
-    $('header nav').toggleClass('shownav');
-  });
-  var myWidth = 0;
-  function getSize(){
-    if( typeof( window.innerWidth ) == 'number' ) {
-      myWidth = window.innerWidth;
-    } else if( document.documentElement && document.documentElement.clientWidth) {
-      myWidth = document.documentElement.clientWidth;
-    };
-  };
-  var m = $('#main'),
-      a = $('#asidepart'),
-      c = $('.closeaside'),
-      o = $('.openaside');
-  c.click(function(){
-    a.addClass('fadeOut').css('display', 'none');
-    o.css('display', 'block').addClass('fadeIn');
-    m.addClass('moveMain');
-  });
-  o.click(function(){
-    o.css('display', 'none').removeClass('beforeFadeIn');
-    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
-    m.removeClass('moveMain');
-  });
-  $(window).scroll(function(){
-    o.css("top",Math.max(80,260-$(this).scrollTop()));
-  });
-  
-        getSize();
-        if (myWidth >= 1024) {
-          c.click();
-        }
-  
-  $(window).resize(function(){
-    getSize(); 
-    if (myWidth >= 1024) {
-      $('header nav').removeClass('shownav');
-    }else{
-      m.removeClass('moveMain');
-      a.css('display', 'block').removeClass('fadeOut');
-      o.css('display', 'none');
       
-      $('#toc.toc-aside').css('display', 'none');
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" src="/images/author.jpg" alt="Tenlee" itemprop="image"/>
+          <p class="site-author-name" itemprop="name">Tenlee</p>
+        </div>
+        <p class="site-description motion-element" itemprop="description"></p>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">10</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          <div class="site-state-item site-state-categories">
+            
+              <span class="site-state-item-count">0</span>
+              <span class="site-state-item-name">分类</span>
+              
+          </div>
+
+          <div class="site-state-item site-state-tags">
+            <a href="/tags">
+              <span class="site-state-item-count">2</span>
+              <span class="site-state-item-name">标签</span>
+              </a>
+          </div>
+
+        </nav>
+
         
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        <div class="links-of-author motion-element">
+          
+            <p class="site-author-name">友情链接</p>
+            
+              <span class="links-of-author-item">
+              <a href="http://jzqt.github.io/" target="_blank">JZQT</a>
+              </span>
+            
+          
+        </div>
+
+      </section>
+
+      
+        <section class="post-toc-wrap sidebar-panel-active">
+          <div class="post-toc-indicator-top post-toc-indicator"></div>
+          <div class="post-toc">
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#题目链接："><span class="nav-number">1.</span> <span class="nav-text">题目链接：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#题目大意："><span class="nav-number">2.</span> <span class="nav-text">题目大意：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#样例解释："><span class="nav-number">3.</span> <span class="nav-text">样例解释：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#解题思路："><span class="nav-number">4.</span> <span class="nav-text">解题思路：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#代码"><span class="nav-number">5.</span> <span class="nav-text">代码</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#标程"><span class="nav-number">5.1.</span> <span class="nav-text">标程</span></a></li></ol></li></ol></div>
+            
+          </div>
+          <div class="post-toc-indicator-bottom post-toc-indicator"></div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+    </main>
+
+    <footer id="footer" class="footer">
+        <div class="footer-inner">
+            <div class="copyright" >
+  
+  &copy; &nbsp; 
+  <span itemprop="copyrightYear">2015</span>
+  <span class="with-love">
+    <i class="icon-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Tenlee</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT
+  </a>
+</div>
+
+
+
+        </div>
+    </footer>
+
+    <div class="back-to-top"></div>
+</div>
+
+<script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  
+  
+    
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"tenlee2012"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+    
+     
+  	<script src="/js/ua-parser.min.js"></script>
+  	<script src="/js/hook-duoshuo.js"></script>
+  
+
+    
+  
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+  <script type="text/javascript" src="/js/fancy-box.js?v=0.4.4"></script>
+
+
+  <script type="text/javascript" src="/js/helpers.js?v=0.4.4"></script>
+  
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
+
+  <script type="text/javascript" src="/js/motion_global.js?v=0.4.4" id="motion.global"></script>
+
+
+
+  <script type="text/javascript" src="/js/search-toggle.js"></script>
+
+
+  
+<script type="text/javascript" src="/js/bootstrap.scrollspy.js?v=0.4.4" id="bootstrap.scrollspy.custom"></script>
+
+
+<script type="text/javascript" id="sidebar.toc.highlight">
+  $(document).ready(function () {
+    var tocSelector = '.post-toc';
+    var $tocSelector = $(tocSelector);
+    var activeCurrentSelector = '.active-current';
+
+    $tocSelector
+      .on('activate.bs.scrollspy', function () {
+        var $currentActiveElement = $(tocSelector + ' .active').last();
+
+        removeCurrentActiveClass();
+        $currentActiveElement.addClass('active-current');
+
+        $tocSelector[0].scrollTop = $currentActiveElement.position().top;
+      })
+      .on('clear.bs.scrollspy', function () {
+        removeCurrentActiveClass();
+      });
+
+    function removeCurrentActiveClass () {
+      $(tocSelector + ' ' + activeCurrentSelector)
+        .removeClass(activeCurrentSelector.substring(1));
+    }
+
+    function processTOC () {
+      getTOCMaxHeight();
+      toggleTOCOverflowIndicators();
+    }
+
+    function getTOCMaxHeight () {
+      var height = $('.sidebar').height() -
+                   $tocSelector.position().top -
+                   $('.post-toc-indicator-bottom').height();
+
+      $tocSelector.css('height', height);
+
+      return height;
+    }
+
+    function toggleTOCOverflowIndicators () {
+      tocOverflowIndicator(
+        '.post-toc-indicator-top',
+        $tocSelector.scrollTop() > 0 ? 'show' : 'hide'
+      );
+
+      tocOverflowIndicator(
+        '.post-toc-indicator-bottom',
+        $tocSelector.scrollTop() >= $tocSelector.find('ol').height() - $tocSelector.height() ? 'hide' : 'show'
+      )
+    }
+
+    $(document).on('sidebar.motion.complete', function () {
+      processTOC();
+    });
+
+    $('body').scrollspy({ target: tocSelector });
+    $(window).on('resize', function () {
+      if ( $('.sidebar').hasClass('sidebar-active') ) {
+        processTOC();
+      }
+    });
+
+    onScroll($tocSelector);
+
+    function onScroll (element) {
+      element.on('mousewheel DOMMouseScroll', function (event) {
+          var oe = event.originalEvent;
+          var delta = oe.wheelDelta || -oe.detail;
+
+          this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
+          event.preventDefault();
+
+          toggleTOCOverflowIndicators();
+      });
+    }
+
+    function tocOverflowIndicator (indicator, action) {
+      var $indicator = $(indicator);
+      var opacity = action === 'show' ? 0.4 : 0;
+      $indicator.velocity ?
+        $indicator.velocity('stop').velocity({
+          opacity: opacity
+        }, { duration: 100 }) :
+        $indicator.stop().animate({
+          opacity: opacity
+        }, 100);
+    }
+
+  });
+</script>
+
+<script type="text/javascript" id="sidebar.nav">
+  $(document).ready(function () {
+    var html = $('html');
+    var TAB_ANIMATE_DURATION = 200;
+    var hasVelocity = $.isFunction(html.velocity);
+
+    $('.sidebar-nav li').on('click', function () {
+      var item = $(this);
+      var activeTabClassName = 'sidebar-nav-active';
+      var activePanelClassName = 'sidebar-panel-active';
+      if (item.hasClass(activeTabClassName)) {
+        return;
+      }
+
+      var currentTarget = $('.' + activePanelClassName);
+      var target = $('.' + item.data('target'));
+
+      hasVelocity ?
+        currentTarget.velocity('transition.slideUpOut', TAB_ANIMATE_DURATION, function () {
+          target
+            .velocity('stop')
+            .velocity('transition.slideDownIn', TAB_ANIMATE_DURATION)
+            .addClass(activePanelClassName);
+        }) :
+        currentTarget.animate({ opacity: 0 }, TAB_ANIMATE_DURATION, function () {
+          currentTarget.hide();
+          target
+            .stop()
+            .css({'opacity': 0, 'display': 'block'})
+            .animate({ opacity: 1 }, TAB_ANIMATE_DURATION, function () {
+              currentTarget.removeClass(activePanelClassName);
+              target.addClass(activePanelClassName);
+            });
+        });
+
+      item.siblings().removeClass(activeTabClassName);
+      item.addClass(activeTabClassName);
+    });
+
+    $('.post-toc a').on('click', function (e) {
+      e.preventDefault();
+      var targetSelector = escapeSelector(this.getAttribute('href'));
+      var offset = $(targetSelector).offset().top;
+      hasVelocity ?
+        html.velocity('stop').velocity('scroll', {
+          offset: offset  + 'px',
+          mobileHA: false
+        }) :
+        $('html, body').stop().animate({
+          scrollTop: offset
+        }, 500);
+    });
+
+    // Expand sidebar on post detail page by default, when post has a toc.
+    var $tocContent = $('.post-toc-content');
+    if (isDesktop() && CONFIG.sidebar === 'post') {
+      if ($tocContent.length > 0 && $tocContent.html().trim().length > 0) {
+        displaySidebar();
+      }
     }
   });
-});
-</script>
-
-<script type="text/javascript">
-$(document).ready(function(){ 
-  var ai = $('.article-content>iframe'),
-      ae = $('.article-content>embed'),
-      t  = $('#toc'),
-      ta = $('#toc.toc-aside'),
-      o  = $('.openaside'),
-      c  = $('.closeaside');
-  if(ai.length>0){
-    ai.wrap('<div class="video-container" />');
-  };
-  if(ae.length>0){
-   ae.wrap('<div class="video-container" />');
-  };
-  c.click(function(){
-    ta.css('display', 'block').addClass('fadeIn');
-  });
-  o.click(function(){
-    ta.css('display', 'none');
-  });
-  $(window).scroll(function(){
-    ta.css("top",Math.max(140,320-$(this).scrollTop()));
-  });
-});
-</script>
-
-
-<script type="text/javascript">
-$(document).ready(function(){ 
-  var $this = $('.share'),
-      url = $this.attr('data-url'),
-      encodedUrl = encodeURIComponent(url),
-      title = $this.attr('data-title'),
-      tsina = $this.attr('data-tsina'),
-      description = $this.attr('description');
-  var html = [
-  '<div class="hoverqrcode clearfix"></div>',
-  '<a class="overlay" id="qrcode"></a>',
-  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
-  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
-  '<a href="#qrcode" class="article-share-qrcode" title="微信"></a>',
-  '<a href="http://widget.renren.com/dialog/share?resourceUrl=' + encodedUrl + '&srcUrl=' + encodedUrl + '&title=' + title +'" class="article-share-renren" target="_blank" title="人人"></a>',
-  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="微博"></a>',
-  '<span title="Share to"></span>'
-  ].join('');
-  $this.append(html);
-
-  $('.hoverqrcode').hide();
-
-  var myWidth = 0;
-  function updatehoverqrcode(){
-    if( typeof( window.innerWidth ) == 'number' ) {
-      myWidth = window.innerWidth;
-    } else if( document.documentElement && document.documentElement.clientWidth) {
-      myWidth = document.documentElement.clientWidth;
-    };
-    var qrsize = myWidth > 1024 ? 200:100;
-    var options = {render: 'image', size: qrsize, fill: '#2ca6cb', text: url, radius: 0.5, quiet: 1};
-    var p = $('.article-share-qrcode').position();
-    $('.hoverqrcode').empty().css('width', qrsize).css('height', qrsize)
-                          .css('left', p.left-qrsize/2+20).css('top', p.top-qrsize-10)
-                          .qrcode(options);
-  };
-  $(window).resize(function(){
-    $('.hoverqrcode').hide();
-  });
-  $('.article-share-qrcode').click(function(){
-    updatehoverqrcode();
-    $('.hoverqrcode').toggle();
-  });
-  $('.article-share-qrcode').hover(function(){}, function(){
-      $('.hoverqrcode').hide();
-  });
-});   
 </script>
 
 
 
 <script type="text/javascript">
-  var duoshuoQuery = {short_name:"tenlee2012"};
-  (function() {
-    var ds = document.createElement('script');
-    ds.type = 'text/javascript';ds.async = true;
-    ds.src = '//static.duoshuo.com/embed.js';
-    ds.charset = 'UTF-8';
-    (document.getElementsByTagName('head')[0] 
-    || document.getElementsByTagName('body')[0]).appendChild(ds);
-  })();
-</script> 
-
-
-
-
-
-
-
-<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
-<script src="/fancybox/jquery.fancybox.pack.js"></script>
-<script type="text/javascript">
-$(document).ready(function(){ 
-  $('.article-content').each(function(i){
-    $(this).find('img').each(function(){
-      if ($(this).parent().hasClass('fancybox')) return;
-      var alt = this.alt;
-      if (alt) $(this).after('<span class="caption">' + alt + '</span>');
-      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
+    $(document).ready(function () {
+        if (CONFIG.sidebar === 'always') {
+            displaySidebar();
+        }
     });
-    $(this).find('.fancybox').each(function(){
-      $(this).attr('rel', 'article' + i);
-    });
-  });
-  if($.fancybox){
-    $('.fancybox').fancybox();
-  }
-}); 
 </script>
 
-
-
-<!-- Analytics Begin -->
-
-
-
-<script type="text/javascript">
-var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
-document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3Fa1eb6e34b6f3af6aeabbc1527c36760f' type='text/javascript'%3E%3C/script%3E"));
-</script>
-
-
-
-<!-- Analytics End -->
-
-<!-- Totop Begin -->
-
-	<div id="totop">
-	<a title="返回顶部"><img src="/img/scrollup.png"/></a>
-	</div>
-	<script src="/js/totop.js"></script>
-
-<!-- Totop End -->
-
-<!-- MathJax Begin -->
-<!-- mathjax config similar to math.stackexchange -->
 
 <script type="text/x-mathjax-config">
   MathJax.Hub.Config({
     tex2jax: {
-      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
-      processEscapes: true
+      inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+      processEscapes: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
     }
   });
 </script>
 
 <script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-      tex2jax: {
-        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
-      }
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for (i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+
+
+
+
+
+
+<!-- lazyload -->
+<script type="text/javascript" src="/js/lazyload.js"></script>
+<script type="text/javascript">
+    jQuery(function () {
+        jQuery("#posts img").lazyload({
+            placeholder: "/images/loading.gif",
+            effect: "fadeIn"
+        });
     });
 </script>
-
-<script type="text/x-mathjax-config">
-    MathJax.Hub.Queue(function() {
-        var all = MathJax.Hub.getAllJax(), i;
-        for(i=0; i < all.length; i += 1) {
-            all[i].SourceElement().parentNode.className += ' has-jax';
-        }
-    });
-</script>
-
-<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
-</script>
-
-
-<!-- MathJax End -->
-
-<!-- Tiny_search Begin -->
-
-<!-- Tiny_search End -->
-
-  </body>
+</body>
 </html>
