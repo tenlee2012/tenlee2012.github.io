@@ -4,21 +4,91 @@
   <title><![CDATA[豪气干云]]></title>
   
   <link href="/atom.xml" rel="self"/>
-  <link href="http://tenlee2012.github.com//"/>
-  <updated>2015-07-29T12:14:57.000Z</updated>
-  <id>http://tenlee2012.github.com//</id>
+  <link href="http://tenlee2012.github.io//"/>
+  <updated>2015-07-31T11:39:10.000Z</updated>
+  <id>http://tenlee2012.github.io//</id>
   
   <author>
-    <name><![CDATA[Tenlee]]></name>
+    <name><![CDATA[tenlee]]></name>
     
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title><![CDATA[HDU 5328 Problem Killer(2015多校联合)]]></title>
+    <link href="http://tenlee2012.github.io/2015/07/31/HDU5328/"/>
+    <id>http://tenlee2012.github.io/2015/07/31/HDU5328/</id>
+    <published>2015-07-31T11:00:00.000Z</published>
+    <updated>2015-07-31T11:39:10.000Z</updated>
+    <content type="html"><![CDATA[<h3 id="题目链接">题目链接</h3><p><a href="http://acm.hdu.edu.cn/showproblem.php?pid=5328" target="_blank" rel="external">戳我</a></p>
+<h3 id="题目大意">题目大意</h3><p>一个序列 $a$, 求这个序列的 连续子序列 中最长的等差序列或者等比序列<br><a id="more"></a></p>
+<h3 id="样例解释">样例解释</h3><p><code>2</code> // T<br><code>5</code> //n<br><code>1 2 3 4 6</code> //n个数, 1,2,3,4是最长等差序列,长度为4<br><code>10</code> //n<br><code>1 1 1 1 1 1 2 3 4 5</code> //前6个1满足等差(比)序列,且长度最长是6</p>
+<h3 id="解题思路">解题思路</h3><p>暴力查询即可<br>此题坑点: 等比序列 的 公比 可能时 分数.</p>
+<h3 id="代码">代码</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//Author LJH</span></span><br><span class="line"><span class="comment">//www.cnblogs.com/tenlee</span></span><br><span class="line"><span class="preprocessor">#<span class="keyword">include</span> &lt;cstdio&gt;</span></span><br><span class="line"><span class="preprocessor">#<span class="keyword">include</span> &lt;cstdlib&gt;</span></span><br><span class="line"><span class="preprocessor">#<span class="keyword">include</span> &lt;cstring&gt;</span></span><br><span class="line"><span class="preprocessor">#<span class="keyword">include</span> &lt;cctype&gt;</span></span><br><span class="line"><span class="preprocessor">#<span class="keyword">include</span> &lt;cmath&gt;</span></span><br><span class="line"><span class="preprocessor">#<span class="keyword">include</span> &lt;algorithm&gt;</span></span><br><span class="line"><span class="preprocessor">#<span class="keyword">include</span> &lt;vector&gt;</span></span><br><span class="line"><span class="preprocessor">#<span class="keyword">include</span> &lt;queue&gt;</span></span><br><span class="line"><span class="preprocessor">#<span class="keyword">include</span> &lt;stack&gt;</span></span><br><span class="line"><span class="preprocessor">#<span class="keyword">include</span> &lt;map&gt;</span></span><br><span class="line"><span class="preprocessor">#<span class="keyword">define</span> clc(a, b) memset(a, b, sizeof(a))</span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> inf = <span class="number">0x3f</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> INF = <span class="number">0x3f3f3f3f</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> maxn = <span class="number">1e6</span>+<span class="number">5</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">double</span> eps = <span class="number">1e-6</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> n;</span><br><span class="line"><span class="keyword">double</span> a[maxn];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span><br><span class="line"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> T;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;T);</span><br><span class="line">    <span class="keyword">while</span>(T--)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;n);</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++) </span><br><span class="line">        &#123;</span><br><span class="line">            <span class="built_in">scanf</span>(<span class="string">"%lf"</span>, &amp;a[i]);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">double</span> ap = a[<span class="number">1</span>] - a[<span class="number">0</span>];</span><br><span class="line">        <span class="keyword">double</span> gp = a[<span class="number">1</span>] / a[<span class="number">0</span>];</span><br><span class="line">        <span class="keyword">int</span> len1 = <span class="number">1</span>, len2 = <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">int</span> malen1 = <span class="number">1</span>, malen2 = <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; n; i++)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span>(<span class="built_in">abs</span>(a[i] - a[i-<span class="number">1</span>] - ap) &lt; eps) len1++;</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">            &#123;</span><br><span class="line">                ap = a[i] - a[i-<span class="number">1</span>];</span><br><span class="line">                len1 = <span class="number">2</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            malen1 = (malen1 &gt; len1 ? malen1 : len1);</span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span>(<span class="built_in">abs</span>(a[i] / a[i-<span class="number">1</span>] - gp) &lt; eps) len2++;</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">            &#123;</span><br><span class="line">                gp = a[i] / a[i-<span class="number">1</span>];</span><br><span class="line">                len2 = <span class="number">2</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            malen2 = (malen2 &gt; len2 ? malen2 : len2);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"%d\n"</span>, malen1 &gt; malen2 ? malen1 : malen2);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+]]></content>
+    <summary type="html">
+    <![CDATA[<h3 id="题目链接">题目链接</h3><p><a href="http://acm.hdu.edu.cn/showproblem.php?pid=5328">戳我</a></p>
+<h3 id="题目大意">题目大意</h3><p>一个序列 $a$, 求这个序列的 连续子序列 中最长的等差序列或者等比序列<br>]]>
+    
+    </summary>
+    
+      <category term="HDUOJ" scheme="http://tenlee2012.github.io/tags/HDUOJ/"/>
+    
+  </entry>
+  
+  <entry>
+    <title><![CDATA[HDU 5335 Walk Out(2015多校联合)]]></title>
+    <link href="http://tenlee2012.github.io/2015/07/31/HDU5335/"/>
+    <id>http://tenlee2012.github.io/2015/07/31/HDU5335/</id>
+    <published>2015-07-31T09:27:00.000Z</published>
+    <updated>2015-07-31T11:40:51.000Z</updated>
+    <content type="html"><![CDATA[<h3 id="题目链接">题目链接</h3><p><a href="http://acm.hdu.edu.cn/showproblem.php?pid=5335" target="_blank" rel="external">戳我</a></p>
+<h3 id="题目大意">题目大意</h3><p>$m * n$的矩阵，每个格子是<code>0</code>或者<code>1</code>，探险家初始位置是$(1, 1)$，终点位置是$(n, m)$,且只能向 上下左右四个方向走,因为从 起点到终点 所走的路径是由<code>01</code>构成的,故可表示成二进制数,要求寻找一条路径表示的二进制数最小.<br><a id="more"></a></p>
+<h3 id="样例解释">样例解释</h3><p><code>2</code>  //T 两组测试样例<br><code>2 2</code> // n,m, 行 列<br><code>11</code> //第一行<br><code>11</code> //第二行 路径为$(1,1)-&gt;(1,2)-&gt;(2,2)$(也可以是其他),故为<code>111</code><br><code>3 3</code> //n, m<br><code>001</code><br><code>111</code><br><code>101</code> //路径为$(1,1)-&gt;(1,2)-&gt;(2,2)-&gt;(3-&gt;2)-&gt;(3,3)$故为00101,即101</p>
+<h3 id="解题思路">解题思路</h3><p>因为是二进制,所以要尽可能的走0,走0走的离终点越近越好.</p>
+<ul>
+<li>第一步: 一直走<code>0</code>,走到不能走0为止,从这些0中挑出来所有距离终点 曼哈顿距离最小的</li>
+<li>第二步: 从第一步挑出来的 0 为起点 搜索,且只搜<code>右</code>和<code>下</code>两个方向遍历每一层,如果该层有 0 必然选择 0,并把 0 加入队列,如果该层只有 1 ,则把所有的 1 都加入队列,依次遍历下一层.</li>
+</ul>
+<h3 id="代码">代码</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//Author LJH</span></span><br><span class="line"><span class="comment">//www.cnblogs.com/tenlee</span></span><br><span class="line"><span class="preprocessor">#<span class="keyword">include</span> &lt;cstdio&gt;</span></span><br><span class="line"><span class="preprocessor">#<span class="keyword">include</span> &lt;cstdlib&gt;</span></span><br><span class="line"><span class="preprocessor">#<span class="keyword">include</span> &lt;cstring&gt;</span></span><br><span class="line"><span class="preprocessor">#<span class="keyword">include</span> &lt;cctype&gt;</span></span><br><span class="line"><span class="preprocessor">#<span class="keyword">include</span> &lt;cmath&gt;</span></span><br><span class="line"><span class="preprocessor">#<span class="keyword">include</span> &lt;algorithm&gt;</span></span><br><span class="line"><span class="preprocessor">#<span class="keyword">include</span> &lt;vector&gt;</span></span><br><span class="line"><span class="preprocessor">#<span class="keyword">include</span> &lt;queue&gt;</span></span><br><span class="line"><span class="preprocessor">#<span class="keyword">include</span> &lt;stack&gt;</span></span><br><span class="line"><span class="preprocessor">#<span class="keyword">include</span> &lt;map&gt;</span></span><br><span class="line"><span class="preprocessor">#<span class="keyword">define</span> clc(a, b) memset(a, b, sizeof(a))</span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> inf = <span class="number">0x3f</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> INF = <span class="number">0x3f3f3f3f</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> maxn = <span class="number">1e3</span>+<span class="number">10</span>;</span><br><span class="line"><span class="keyword">int</span> MOVE[<span class="number">4</span>][<span class="number">2</span>] = &#123;<span class="number">1</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>, -<span class="number">1</span>, <span class="number">0</span>, <span class="number">0</span>, -<span class="number">1</span>&#125;;</span><br><span class="line"><span class="keyword">struct</span> Point</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">int</span> x, y;</span><br><span class="line">    <span class="keyword">int</span> step;</span><br><span class="line">&#125;p[maxn];</span><br><span class="line"><span class="keyword">int</span> vis[maxn][maxn];</span><br><span class="line"><span class="keyword">char</span> g[maxn][maxn];</span><br><span class="line"><span class="keyword">int</span> n, m;</span><br><span class="line"><span class="keyword">char</span> ans[maxn*<span class="number">4</span>];</span><br><span class="line"><span class="built_in">queue</span>&lt;Point&gt; q;</span><br><span class="line"><span class="built_in">queue</span>&lt;Point&gt; q1;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="keyword">bool</span> <span class="title">judge</span><span class="params">(<span class="keyword">int</span> x, <span class="keyword">int</span> y)</span></span><br><span class="line"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(x &lt; <span class="number">0</span> || x &gt;= n || y &lt; <span class="number">0</span> || y &gt;= m) <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">BFS</span><span class="params">(<span class="keyword">int</span> x, <span class="keyword">int</span> y)</span></span><br><span class="line"></span>&#123;</span><br><span class="line">    <span class="keyword">while</span>(!q.empty()) q.pop();</span><br><span class="line">    <span class="keyword">int</span> xx, yy;</span><br><span class="line">    <span class="keyword">int</span> dis = m+n-<span class="number">2</span>;</span><br><span class="line">    Point s, now, next;</span><br><span class="line">    s.x = x; s.y = x; s.step = <span class="number">0</span>;</span><br><span class="line">    q.push(s);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">while</span>(!q.empty() &amp;&amp; g[x][y] == <span class="string">'0'</span>) <span class="comment">//开始一直走0</span></span><br><span class="line">    &#123;</span><br><span class="line">        now = q.front(); q.pop();</span><br><span class="line">        q1.push(now);</span><br><span class="line">        <span class="keyword">if</span>(n-<span class="number">1</span>-now.x+m-<span class="number">1</span>-now.y &lt; dis) <span class="comment">//寻找离终点最近的 0 点 的距离</span></span><br><span class="line">        &#123;</span><br><span class="line">            dis = n-<span class="number">1</span>-now.x+m-<span class="number">1</span>-now.y;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">4</span>; i++)</span><br><span class="line">        &#123;</span><br><span class="line">            xx = now.x + MOVE[i][<span class="number">0</span>];</span><br><span class="line">            yy = now.y + MOVE[i][<span class="number">1</span>];</span><br><span class="line">            <span class="keyword">if</span>(!judge(xx, yy)) <span class="keyword">continue</span>;</span><br><span class="line">            <span class="keyword">if</span>(g[xx][yy] == <span class="string">'1'</span>) <span class="keyword">continue</span>;</span><br><span class="line">            <span class="keyword">if</span>(vis[xx][yy]) <span class="keyword">continue</span>;</span><br><span class="line">            vis[xx][yy] = <span class="number">1</span>;</span><br><span class="line">            next.x = xx; next.y = yy;</span><br><span class="line">            next.step = now.step + <span class="number">1</span>;</span><br><span class="line">            q.push(next);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;<span class="comment">//q已空</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">while</span>(!q1.empty())</span><br><span class="line">    &#123;</span><br><span class="line">        now = q1.front(); q1.pop();</span><br><span class="line">        <span class="keyword">if</span>(n-<span class="number">1</span>-now.x+m-<span class="number">1</span>-now.y == dis) <span class="comment">//把到终点的距离等于dis的0点加入队列</span></span><br><span class="line">        &#123;</span><br><span class="line">            q.push(now);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125; <span class="comment">//q1 已空</span></span><br><span class="line">    <span class="keyword">if</span>(dis == <span class="number">0</span>) <span class="comment">//此时说明可以直接走0到终点</span></span><br><span class="line">    &#123;</span><br><span class="line">        ans[<span class="number">0</span>] = <span class="string">'0'</span>;</span><br><span class="line">        ans[<span class="number">1</span>] = <span class="string">'\0'</span>;</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">int</span> t = <span class="number">0</span>; <span class="comment">// 所走的路径</span></span><br><span class="line">    <span class="keyword">char</span> flag = <span class="string">'1'</span>;</span><br><span class="line">    <span class="keyword">if</span>(dis == n+m-<span class="number">2</span>) ans[t++] = <span class="string">'1'</span>;</span><br><span class="line">    <span class="keyword">while</span>(!q.empty())</span><br><span class="line">    &#123;</span><br><span class="line">        flag = <span class="string">'1'</span>;</span><br><span class="line">        <span class="keyword">while</span>(!q.empty()) <span class="comment">//属于同一层的都找出来</span></span><br><span class="line">        &#123;</span><br><span class="line">            now = q.front(); q.pop();</span><br><span class="line">            <span class="comment">//printf("x = %d, y = %d, step = %d\n", now.x, now.y, now.step);</span></span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">2</span>; i++)</span><br><span class="line">            &#123;</span><br><span class="line">                xx = now.x + MOVE[i][<span class="number">0</span>];</span><br><span class="line">                yy = now.y + MOVE[i][<span class="number">1</span>];</span><br><span class="line">                <span class="keyword">if</span>(!judge(xx, yy) || vis[xx][yy]) <span class="keyword">continue</span>;</span><br><span class="line">                vis[xx][yy] = <span class="number">1</span>;</span><br><span class="line">                <span class="keyword">if</span>(g[xx][yy] == <span class="string">'0'</span>) flag = <span class="string">'0'</span>; <span class="comment">//如果该层有0,则把0都挑出来作为下一步</span></span><br><span class="line">                next.x = xx; next.y = yy; next.step = now.step + <span class="number">1</span>;</span><br><span class="line">                q1.push(next);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">while</span>(!q1.empty())</span><br><span class="line">        &#123;</span><br><span class="line">            now = q1.front(); q1.pop();</span><br><span class="line">            <span class="keyword">if</span>(now.x == n-<span class="number">1</span> &amp;&amp; now.y == m-<span class="number">1</span>)</span><br><span class="line">            &#123;</span><br><span class="line">                ans[t++] = g[n-<span class="number">1</span>][m-<span class="number">1</span>];</span><br><span class="line">                ans[t] = <span class="string">'\0'</span>;</span><br><span class="line">                <span class="keyword">return</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span>(g[now.x][now.y] == flag)<span class="comment">//如果该层有0,则把0都挑出来作为下一步</span></span><br><span class="line">            &#123;</span><br><span class="line">                q.push(now);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        ans[t++] = flag;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span><br><span class="line"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> T;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;T);</span><br><span class="line">    <span class="keyword">while</span>(T--)</span><br><span class="line">    &#123;</span><br><span class="line">        clc(vis, <span class="number">0</span>);</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">"%d %d"</span>, &amp;n, &amp;m);</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="built_in">scanf</span>(<span class="string">"%s"</span>, g[i]);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(n == <span class="number">1</span> &amp;&amp; m == <span class="number">1</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="built_in">puts</span>(g[<span class="number">0</span>]);</span><br><span class="line">            <span class="keyword">continue</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        BFS(<span class="number">0</span>, <span class="number">0</span>);</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"%s\n"</span>, ans);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+]]></content>
+    <summary type="html">
+    <![CDATA[<h3 id="题目链接">题目链接</h3><p><a href="http://acm.hdu.edu.cn/showproblem.php?pid=5335">戳我</a></p>
+<h3 id="题目大意">题目大意</h3><p>$m * n$的矩阵，每个格子是<code>0</code>或者<code>1</code>，探险家初始位置是$(1, 1)$，终点位置是$(n, m)$,且只能向 上下左右四个方向走,因为从 起点到终点 所走的路径是由<code>01</code>构成的,故可表示成二进制数,要求寻找一条路径表示的二进制数最小.<br>]]>
+    
+    </summary>
+    
+      <category term="HDUOJ" scheme="http://tenlee2012.github.io/tags/HDUOJ/"/>
+    
+  </entry>
+  
+  <entry>
+    <title><![CDATA[HDU 5327 Olympiad(2015多校联合)]]></title>
+    <link href="http://tenlee2012.github.io/2015/07/31/HDU5327/"/>
+    <id>http://tenlee2012.github.io/2015/07/31/HDU5327/</id>
+    <published>2015-07-31T08:00:00.000Z</published>
+    <updated>2015-07-31T11:40:15.000Z</updated>
+    <content type="html"><![CDATA[<h3 id="题目链接">题目链接</h3><p><a href="http://acm.hdu.edu.cn/showproblem.php?pid=5327" target="_blank" rel="external">戳我</a></p>
+<h3 id="题目大意">题目大意</h3><p>计算区间 $L R$内每个数的 每位 是由不同的数 构成的 个数<br>即 一个区间内的每个数 它的个位,十位…..是不同的数字构成的个数<br><a id="more"></a></p>
+<h3 id="样例解释">样例解释</h3><p>略</p>
+<h3 id="解题思路">解题思路</h3><p>简单题. 但是暴力枚举肯定会超时的.但是比赛的时候数据比较弱,可以水过去…..<br>可以先预处理每一个前缀有多少个即可</p>
+<h3 id="代码">代码</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//Author LJH</span></span><br><span class="line"><span class="comment">//www.cnblogs.com/tenlee</span></span><br><span class="line"><span class="preprocessor">#<span class="keyword">include</span> &lt;cstdio&gt;</span></span><br><span class="line"><span class="preprocessor">#<span class="keyword">include</span> &lt;cstdlib&gt;</span></span><br><span class="line"><span class="preprocessor">#<span class="keyword">include</span> &lt;cstring&gt;</span></span><br><span class="line"><span class="preprocessor">#<span class="keyword">include</span> &lt;cctype&gt;</span></span><br><span class="line"><span class="preprocessor">#<span class="keyword">include</span> &lt;cmath&gt;</span></span><br><span class="line"><span class="preprocessor">#<span class="keyword">include</span> &lt;algorithm&gt;</span></span><br><span class="line"><span class="preprocessor">#<span class="keyword">include</span> &lt;vector&gt;</span></span><br><span class="line"><span class="preprocessor">#<span class="keyword">include</span> &lt;queue&gt;</span></span><br><span class="line"><span class="preprocessor">#<span class="keyword">include</span> &lt;stack&gt;</span></span><br><span class="line"><span class="preprocessor">#<span class="keyword">include</span> &lt;map&gt;</span></span><br><span class="line"><span class="preprocessor">#<span class="keyword">define</span> clc(a, b) memset(a, b, sizeof(a))</span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> inf = <span class="number">0x3f</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> INF = <span class="number">0x3f3f3f3f</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> maxn = <span class="number">1e5</span>+<span class="number">5</span>;</span><br><span class="line"><span class="keyword">int</span> a[maxn], b[maxn], ha[<span class="number">20</span>];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">judge</span><span class="params">(<span class="keyword">int</span> n)</span></span><br><span class="line"></span>&#123;</span><br><span class="line">    clc(ha, <span class="number">0</span>);</span><br><span class="line">    <span class="keyword">int</span> x, y;</span><br><span class="line">    <span class="keyword">while</span>(n)</span><br><span class="line">    &#123;</span><br><span class="line">        x = n % <span class="number">10</span>;</span><br><span class="line">        n = n / <span class="number">10</span>;</span><br><span class="line">        <span class="keyword">if</span>(ha[x]) <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">        <span class="keyword">else</span> ha[x] = <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Init</span><span class="params">()</span></span><br><span class="line"></span>&#123;</span><br><span class="line">    clc(b, <span class="number">0</span>);</span><br><span class="line">    a[<span class="number">0</span>] = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; maxn; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        a[i] = a[i-<span class="number">1</span>];</span><br><span class="line">        <span class="keyword">if</span>(judge(i))</span><br><span class="line">        &#123;</span><br><span class="line">            b[i] = <span class="number">1</span>;</span><br><span class="line">            a[i]++;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span><br><span class="line"></span>&#123;</span><br><span class="line">    Init();</span><br><span class="line">    <span class="keyword">int</span> T;</span><br><span class="line">    <span class="keyword">int</span> x, y, ans;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;T);</span><br><span class="line">    <span class="keyword">while</span>(T--)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">"%d %d"</span>, &amp;x, &amp;y);</span><br><span class="line">        ans = a[y] - a[x];</span><br><span class="line">        <span class="keyword">if</span>(b[x]) </span><br><span class="line">        &#123;</span><br><span class="line">            ans++;</span><br><span class="line">            <span class="comment">//puts("hehe");</span></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"%d\n"</span>, ans);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+]]></content>
+    <summary type="html">
+    <![CDATA[<h3 id="题目链接">题目链接</h3><p><a href="http://acm.hdu.edu.cn/showproblem.php?pid=5327">戳我</a></p>
+<h3 id="题目大意">题目大意</h3><p>计算区间 $L R$内每个数的 每位 是由不同的数 构成的 个数<br>即 一个区间内的每个数 它的个位,十位…..是不同的数字构成的个数<br>]]>
+    
+    </summary>
+    
+      <category term="HDUOJ" scheme="http://tenlee2012.github.io/tags/HDUOJ/"/>
+    
+  </entry>
+  
+  <entry>
     <title><![CDATA[HDU 5316 Magician(2015多校联合)]]></title>
-    <link href="http://tenlee2012.github.com/2015/07/29/HDU5316/"/>
-    <id>http://tenlee2012.github.com/2015/07/29/HDU5316/</id>
+    <link href="http://tenlee2012.github.io/2015/07/29/HDU5316/"/>
+    <id>http://tenlee2012.github.io/2015/07/29/HDU5316/</id>
     <published>2015-07-29T08:47:00.000Z</published>
     <updated>2015-07-29T12:14:57.000Z</updated>
     <content type="html"><![CDATA[<h3 id="题目链接：">题目链接：</h3><p><a href="http://acm.hdu.edu.cn/showproblem.php?pid=5316" target="_blank" rel="external">戳我</a></p>
@@ -33,14 +103,14 @@
     
     </summary>
     
-      <category term="HDUOJ" scheme="http://tenlee2012.github.com/tags/HDUOJ/"/>
+      <category term="HDUOJ" scheme="http://tenlee2012.github.io/tags/HDUOJ/"/>
     
   </entry>
   
   <entry>
     <title><![CDATA[HDU 5323 Solve this interesting problem(2015多校联合)]]></title>
-    <link href="http://tenlee2012.github.com/2015/07/29/HDU5323/"/>
-    <id>http://tenlee2012.github.com/2015/07/29/HDU5323/</id>
+    <link href="http://tenlee2012.github.io/2015/07/29/HDU5323/"/>
+    <id>http://tenlee2012.github.io/2015/07/29/HDU5323/</id>
     <published>2015-07-29T03:24:00.000Z</published>
     <updated>2015-07-29T12:43:49.000Z</updated>
     <content type="html"><![CDATA[<h3 id="题目链接：">题目链接：</h3><p><a href="http://acm.hdu.edu.cn/showproblem.php?pid=5323" target="_blank" rel="external">戳我</a></p>
@@ -55,14 +125,14 @@
     
     </summary>
     
-      <category term="HDUOJ" scheme="http://tenlee2012.github.com/tags/HDUOJ/"/>
+      <category term="HDUOJ" scheme="http://tenlee2012.github.io/tags/HDUOJ/"/>
     
   </entry>
   
   <entry>
     <title><![CDATA[HDU 5319 Painter(2015多校联合)]]></title>
-    <link href="http://tenlee2012.github.com/2015/07/28/HDU5319/"/>
-    <id>http://tenlee2012.github.com/2015/07/28/HDU5319/</id>
+    <link href="http://tenlee2012.github.io/2015/07/28/HDU5319/"/>
+    <id>http://tenlee2012.github.io/2015/07/28/HDU5319/</id>
     <published>2015-07-28T12:24:00.000Z</published>
     <updated>2015-07-29T12:15:09.000Z</updated>
     <content type="html"><![CDATA[<h3 id="题目链接：">题目链接：</h3><p><a href="http://acm.hdu.edu.cn/showproblem.php?pid=5319" target="_blank" rel="external">戳我</a></p>
@@ -77,14 +147,14 @@
     
     </summary>
     
-      <category term="HDUOJ" scheme="http://tenlee2012.github.com/tags/HDUOJ/"/>
+      <category term="HDUOJ" scheme="http://tenlee2012.github.io/tags/HDUOJ/"/>
     
   </entry>
   
   <entry>
     <title><![CDATA[HDU 5317 RGCDQ(2015多校联合)]]></title>
-    <link href="http://tenlee2012.github.com/2015/07/28/HDU5317/"/>
-    <id>http://tenlee2012.github.com/2015/07/28/HDU5317/</id>
+    <link href="http://tenlee2012.github.io/2015/07/28/HDU5317/"/>
+    <id>http://tenlee2012.github.io/2015/07/28/HDU5317/</id>
     <published>2015-07-28T11:23:17.000Z</published>
     <updated>2015-07-29T12:15:03.000Z</updated>
     <content type="html"><![CDATA[<h3 id="题目链接：">题目链接：</h3><p><a href="http://acm.hdu.edu.cn/showproblem.php?pid=5317" target="_blank" rel="external">戳我</a></p>
@@ -99,14 +169,14 @@
     
     </summary>
     
-      <category term="HDUOJ" scheme="http://tenlee2012.github.com/tags/HDUOJ/"/>
+      <category term="HDUOJ" scheme="http://tenlee2012.github.io/tags/HDUOJ/"/>
     
   </entry>
   
   <entry>
     <title><![CDATA[HDU 5308 I Wanna Become A 24-Point Master(2015多校联合)]]></title>
-    <link href="http://tenlee2012.github.com/2015/07/25/HDU5308/"/>
-    <id>http://tenlee2012.github.com/2015/07/25/HDU5308/</id>
+    <link href="http://tenlee2012.github.io/2015/07/25/HDU5308/"/>
+    <id>http://tenlee2012.github.io/2015/07/25/HDU5308/</id>
     <published>2015-07-25T09:16:17.000Z</published>
     <updated>2015-07-29T12:14:24.000Z</updated>
     <content type="html"><![CDATA[<h3 id="题目链接：">题目链接：</h3><p><a href="http://acm.hdu.edu.cn/showproblem.php?pid=5308" target="_blank" rel="external">戳我</a></p>
@@ -122,14 +192,14 @@
     
     </summary>
     
-      <category term="HDUOJ" scheme="http://tenlee2012.github.com/tags/HDUOJ/"/>
+      <category term="HDUOJ" scheme="http://tenlee2012.github.io/tags/HDUOJ/"/>
     
   </entry>
   
   <entry>
     <title><![CDATA[HDU 5301 Buildings(2015多校联合)]]></title>
-    <link href="http://tenlee2012.github.com/2015/07/25/HDU5301/"/>
-    <id>http://tenlee2012.github.com/2015/07/25/HDU5301/</id>
+    <link href="http://tenlee2012.github.io/2015/07/25/HDU5301/"/>
+    <id>http://tenlee2012.github.io/2015/07/25/HDU5301/</id>
     <published>2015-07-25T06:35:17.000Z</published>
     <updated>2015-07-29T12:14:12.000Z</updated>
     <content type="html"><![CDATA[<h3 id="题目链接：">题目链接：</h3><p><a href="http://acm.hdu.edu.cn/showproblem.php?pid=5301" target="_blank" rel="external">戳我</a></p>
@@ -151,14 +221,14 @@
     
     </summary>
     
-      <category term="HDUOJ" scheme="http://tenlee2012.github.com/tags/HDUOJ/"/>
+      <category term="HDUOJ" scheme="http://tenlee2012.github.io/tags/HDUOJ/"/>
     
   </entry>
   
   <entry>
     <title><![CDATA[HDU 5305 Friends(2015多校联合)]]></title>
-    <link href="http://tenlee2012.github.com/2015/07/25/HDU5305/"/>
-    <id>http://tenlee2012.github.com/2015/07/25/HDU5305/</id>
+    <link href="http://tenlee2012.github.io/2015/07/25/HDU5305/"/>
+    <id>http://tenlee2012.github.io/2015/07/25/HDU5305/</id>
     <published>2015-07-25T02:15:17.000Z</published>
     <updated>2015-07-29T12:14:17.000Z</updated>
     <content type="html"><![CDATA[<h3 id="题目链接：">题目链接：</h3><p><a href="http://acm.hdu.edu.cn/showproblem.php?pid=5305" target="_blank" rel="external">戳我</a></p>
@@ -173,14 +243,14 @@
     
     </summary>
     
-      <category term="HDUOJ" scheme="http://tenlee2012.github.com/tags/HDUOJ/"/>
+      <category term="HDUOJ" scheme="http://tenlee2012.github.io/tags/HDUOJ/"/>
     
   </entry>
   
   <entry>
     <title><![CDATA[Django + nginx + uwsgi搭建博客 整理]]></title>
-    <link href="http://tenlee2012.github.com/2015/07/24/Django+nginx+uwsgi%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2%20%E6%95%B4%E7%90%86/"/>
-    <id>http://tenlee2012.github.com/2015/07/24/Django+nginx+uwsgi搭建博客 整理/</id>
+    <link href="http://tenlee2012.github.io/2015/07/24/Django+nginx+uwsgi%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2%20%E6%95%B4%E7%90%86/"/>
+    <id>http://tenlee2012.github.io/2015/07/24/Django+nginx+uwsgi搭建博客 整理/</id>
     <published>2015-07-24T06:02:17.000Z</published>
     <updated>2015-07-29T12:13:56.000Z</updated>
     <content type="html"><![CDATA[<blockquote>
@@ -232,14 +302,14 @@
     
     </summary>
     
-      <category term="Python Django Blog" scheme="http://tenlee2012.github.com/tags/Python-Django-Blog/"/>
+      <category term="Python Django Blog" scheme="http://tenlee2012.github.io/tags/Python-Django-Blog/"/>
     
   </entry>
   
   <entry>
     <title><![CDATA[HDU 5288 OO’s Sequence(2015多校联合)]]></title>
-    <link href="http://tenlee2012.github.com/2015/07/23/HDU5288/"/>
-    <id>http://tenlee2012.github.com/2015/07/23/HDU5288/</id>
+    <link href="http://tenlee2012.github.io/2015/07/23/HDU5288/"/>
+    <id>http://tenlee2012.github.io/2015/07/23/HDU5288/</id>
     <published>2015-07-23T03:15:17.000Z</published>
     <updated>2015-07-29T12:14:05.000Z</updated>
     <content type="html"><![CDATA[<h3 id="题目链接：">题目链接：</h3><h2 id="戳我"><a href="http://acm.hdu.edu.cn/showproblem.php?pid=5288" target="_blank" rel="external">戳我</a></h2><h3 id="题目大意：">题目大意：</h3><p><strong>f(l, r)</strong>代表一个l，r区间内，符合任选i，j <code>（l &lt;= j &lt;= r &amp;&amp; j != i）</code>，有$a<em>{i}$ % $a</em>{j}$ != 0的i的个数<br>求 $\sum<em>{i = 1}^n \sum</em>{j = i}^n f(i, j) mod(10^9+7)$<br><a id="more"></a></p>
@@ -254,14 +324,14 @@
     
     </summary>
     
-      <category term="HDUOJ" scheme="http://tenlee2012.github.com/tags/HDUOJ/"/>
+      <category term="HDUOJ" scheme="http://tenlee2012.github.io/tags/HDUOJ/"/>
     
   </entry>
   
   <entry>
     <title><![CDATA[Hello World]]></title>
-    <link href="http://tenlee2012.github.com/2015/06/09/hello-world/"/>
-    <id>http://tenlee2012.github.com/2015/06/09/hello-world/</id>
+    <link href="http://tenlee2012.github.io/2015/06/09/hello-world/"/>
+    <id>http://tenlee2012.github.io/2015/06/09/hello-world/</id>
     <published>2015-06-09T09:02:17.000Z</published>
     <updated>2015-07-29T12:15:26.000Z</updated>
     <content type="html"><![CDATA[<p>Welcome to <a href="http://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="http://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="http://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.<br><a id="more"></a></p>
