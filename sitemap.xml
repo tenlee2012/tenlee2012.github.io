@@ -2,6 +2,41 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://tenlee2012.github.io/about/index.html</loc>
+    <lastmod>2016-03-03T15:30:09.813Z</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://tenlee2012.github.io/2015/12/11/sqloflibrary/</loc>
+    <lastmod>2016-03-03T15:23:44.213Z</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://tenlee2012.github.io/2015/11/15/Linuxaddsyscall/</loc>
+    <lastmod>2016-03-03T15:19:42.597Z</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://tenlee2012.github.io/2015/08/11/python3connectionmysql/</loc>
+    <lastmod>2016-03-03T15:14:12.064Z</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://tenlee2012.github.io/2015/08/05/downloadhuojacceptcode/</loc>
+    <lastmod>2016-03-03T15:12:09.412Z</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://tenlee2012.github.io/2015/08/06/Python3%E5%AE%9E%E7%8E%B0HDUOJ%E6%A8%A1%E6%8B%9F%E6%8F%90%E4%BA%A4/</loc>
+    <lastmod>2016-03-03T15:11:08.647Z</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://tenlee2012.github.io/2015/07/24/Django+nginx+uwsgi%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2%20%E6%95%B4%E7%90%86/</loc>
+    <lastmod>2016-03-03T14:55:30.328Z</lastmod>
+  </url>
+  
+  <url>
     <loc>http://tenlee2012.github.io/2015/07/31/HDU5335/</loc>
     <lastmod>2015-07-31T11:40:51.000Z</lastmod>
   </url>
@@ -62,11 +97,6 @@
   </url>
   
   <url>
-    <loc>http://tenlee2012.github.io/2015/07/24/Django+nginx+uwsgi%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2%20%E6%95%B4%E7%90%86/</loc>
-    <lastmod>2015-07-29T12:13:56.000Z</lastmod>
-  </url>
-  
-  <url>
     <loc>http://tenlee2012.github.io/tags/index.html</loc>
     <lastmod>2015-07-29T11:28:35.000Z</lastmod>
   </url>
@@ -79,11 +109,6 @@
   <url>
     <loc>http://tenlee2012.github.io/README.html</loc>
     <lastmod>2015-07-03T08:37:31.000Z</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://tenlee2012.github.io/about/index.html</loc>
-    <lastmod>2015-06-08T10:43:26.000Z</lastmod>
   </url>
   
 </urlset>

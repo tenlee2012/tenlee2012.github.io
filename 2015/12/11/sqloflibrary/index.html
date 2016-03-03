@@ -1,0 +1,941 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"/>
+
+
+
+
+  <link href="//fonts.googleapis.com/css?family=Lato:300,400,700,400italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="SQL," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="豪气干云" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=0.5.0" />
+
+
+
+
+
+
+<meta name="description" content="最近.Net课程需要做一个简单的图书管理系统。于是就把这个简单的数据库设计放了上来，用于备忘。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="简单的图书馆管理系统数据库设计">
+<meta property="og:url" content="http://tenlee2012.github.io/2015/12/11/sqloflibrary/index.html">
+<meta property="og:site_name" content="豪气干云">
+<meta property="og:description" content="最近.Net课程需要做一个简单的图书管理系统。于是就把这个简单的数据库设计放了上来，用于备忘。">
+<meta property="og:updated_time" content="2016-03-03T15:23:44.213Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="简单的图书馆管理系统数据库设计">
+<meta name="twitter:description" content="最近.Net课程需要做一个简单的图书管理系统。于是就把这个简单的数据库设计放了上来，用于备忘。">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"right","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+  <title> 简单的图书馆管理系统数据库设计 | 豪气干云 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?a1eb6e34b6f3af6aeabbc1527c36760f";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-right page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">豪气干云</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu ">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-home fa-fw"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-archive fa-fw"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-tags fa-fw"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-user fa-fw"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+
+
+      
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                简单的图书馆管理系统数据库设计
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2015-12-11T14:02:17+08:00" content="2015-12-11">
+              2015-12-11
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2015/12/11/sqloflibrary/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/12/11/sqloflibrary/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>最近.Net课程需要做一个简单的图书管理系统。<br>于是就把这个简单的数据库设计放了上来，用于备忘。<br><a id="more"></a></p>
+<h3 id="表的设计及字段说明">表的设计及字段说明</h3><h5 id="lib_user">lib_user</h5><table>
+<thead>
+<tr>
+<th>字段</th>
+<th style="text-align:center">数据类型</th>
+<th style="text-align:right">作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>userid</td>
+<td style="text-align:center">varchar(50)</td>
+<td style="text-align:right">主键,学号,可用于登录</td>
+</tr>
+<tr>
+<td>userpassword</td>
+<td style="text-align:center">varchar(50)</td>
+<td style="text-align:right">密码</td>
+</tr>
+<tr>
+<td>username</td>
+<td style="text-align:center">varchar(50)</td>
+<td style="text-align:right">用户姓名</td>
+</tr>
+<tr>
+<td>userredp</td>
+<td style="text-align:center">varchar(50)</td>
+<td style="text-align:right">院系</td>
+</tr>
+</tbody>
+</table>
+<p>其他自己扩展</p>
+<h5 id="lib_book">lib_book</h5><table>
+<thead>
+<tr>
+<th>字段</th>
+<th style="text-align:center">数据类型</th>
+<th style="text-align:right">作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>bookid</td>
+<td style="text-align:center">int</td>
+<td style="text-align:right">自增主键</td>
+</tr>
+<tr>
+<td>bookname</td>
+<td style="text-align:center">varchar(50)</td>
+<td style="text-align:right">xx</td>
+</tr>
+<tr>
+<td>bookname</td>
+<td style="text-align:center">varchar(50)</td>
+<td style="text-align:right">xx</td>
+</tr>
+<tr>
+<td>bookname</td>
+<td style="text-align:center">varchar(50)</td>
+<td style="text-align:right">xx</td>
+</tr>
+<tr>
+<td>bookname</td>
+<td style="text-align:center">varchar(50)</td>
+<td style="text-align:right">xx</td>
+</tr>
+<tr>
+<td>bookname</td>
+<td style="text-align:center">varchar(50)</td>
+<td style="text-align:right">xx</td>
+</tr>
+</tbody>
+</table>
+<p>其他自己扩展</p>
+<h5 id="lib_book_borrow">lib_book_borrow</h5><table>
+<thead>
+<tr>
+<th>字段</th>
+<th style="text-align:center">数据类型</th>
+<th style="text-align:right">作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>borid</td>
+<td style="text-align:center">int</td>
+<td style="text-align:right">自增主键</td>
+</tr>
+<tr>
+<td>bookid</td>
+<td style="text-align:center">int</td>
+<td style="text-align:right">lib_book外键</td>
+</tr>
+<tr>
+<td>userid</td>
+<td style="text-align:center">varchar(50)</td>
+<td style="text-align:right">lib_user外键</td>
+</tr>
+<tr>
+<td>bordate</td>
+<td style="text-align:center">date</td>
+<td style="text-align:right">借阅日期</td>
+</tr>
+<tr>
+<td>retdate</td>
+<td style="text-align:center">date</td>
+<td style="text-align:right">还书日期</td>
+</tr>
+<tr>
+<td>borstate</td>
+<td style="text-align:center">int</td>
+<td style="text-align:right">借阅状态(正在借阅,已经还书,续借,已经过期)</td>
+</tr>
+</tbody>
+</table>
+<h5 id="bookbag">bookbag</h5><table>
+<thead>
+<tr>
+<th>字段</th>
+<th style="text-align:center">数据类型</th>
+<th style="text-align:right">作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>bookid</td>
+<td style="text-align:center">int</td>
+<td style="text-align:right">lib_book外键</td>
+</tr>
+<tr>
+<td>usreid</td>
+<td style="text-align:center">varchar(50)</td>
+<td style="text-align:right">lib_user外键</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h4 id="bookbag建表SQL语句">bookbag建表SQL语句</h4><p>其他类似,暂列一个<br><figure class="highlight lisp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">CREATE TABLE lib_borinfo</span><br><span class="line"><span class="list">(</span><br><span class="line"><span class="keyword">userid</span> varchar<span class="list">(<span class="number">50</span>)</span><span class="comment">;</span></span><br><span class="line">bookid int<span class="comment">;</span></span><br><span class="line">FOREIGN KEY <span class="list">(<span class="keyword">userid</span>)</span> REFERENCES lib_user<span class="list">(<span class="keyword">userid</span>)</span><span class="comment">;</span></span><br><span class="line">FOREIGN KEY <span class="list">(<span class="keyword">bookid</span>)</span> REFERENCES lib_book<span class="list">(<span class="keyword">bookid</span>)</span><span class="comment">;</span></span><br><span class="line">ADD CONSTRAINT unique_bor_book UNIQUE <span class="list">(<span class="keyword">userid</span>,bookid)</span><span class="comment">;</span></span><br><span class="line">)</span></span><br></pre></td></tr></table></figure></p>
+<h4 id="用户登录验证SQL语句">用户登录验证SQL语句</h4><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="operator"><span class="keyword">select</span> * <span class="keyword">from</span> lib_user <span class="keyword">where</span>(userid=@userid, userpassword=@<span class="keyword">password</span>)</span></span><br></pre></td></tr></table></figure>
+<h4 id="用户密码变更SQL语句">用户密码变更SQL语句</h4><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="operator"><span class="keyword">update</span> lib_user <span class="keyword">set</span> userpassword=@<span class="keyword">password</span></span></span><br></pre></td></tr></table></figure>
+<h4 id="图书检索SQL语句">图书检索SQL语句</h4><p>暂且列一个以图书名搜索的,其他类似<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="operator"><span class="keyword">select</span> * <span class="keyword">from</span> lib_user <span class="keyword">where</span>(bookname=@bookname);</span></span><br></pre></td></tr></table></figure></p>
+<h4 id="添加到书包SQL语句">添加到书包SQL语句</h4><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="operator"><span class="keyword">use</span> library;</span></span><br><span class="line"><span class="operator"><span class="keyword">insert</span> <span class="keyword">into</span> bookbag(userid, bookid) <span class="keyword">values</span> (@userid, @bookid);</span></span><br></pre></td></tr></table></figure>
+<h4 id="书包查询SQL语句">书包查询SQL语句</h4><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="operator"><span class="keyword">use</span> library;</span></span><br><span class="line"><span class="operator"><span class="keyword">select</span> * <span class="keyword">from</span> lib_book <span class="keyword">where</span></span><br><span class="line">(bookid <span class="keyword">in</span> (<span class="keyword">select</span> bookid <span class="keyword">from</span> bookbag <span class="keyword">where</span> userid=@userid));</span></span><br></pre></td></tr></table></figure>
+<h4 id="从书包删除">从书包删除</h4><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="operator"><span class="keyword">use</span> library;</span></span><br><span class="line"><span class="operator"><span class="keyword">delete</span> <span class="keyword">from</span> bookbag(userid, bookid) <span class="keyword">values</span> (@userid, @bookid);</span></span><br></pre></td></tr></table></figure>
+<h4 id="借阅图书">借阅图书</h4><p>因为书可能是一起借,但是不一定同时还啊,所以必须一本书,对应一个borid.<br><figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="title">use</span> library;</span><br><span class="line"><span class="title">insert</span> into lib_borrow(borid,bookid,userid,bordate,retdate,borstate) </span><br><span class="line">values (<span class="variable">@borid</span>, <span class="variable">@bookid</span>,<span class="variable">@userid</span>,<span class="variable">@bordate</span>,<span class="variable">@retdate</span>,<span class="variable">@borstate</span>);</span><br></pre></td></tr></table></figure></p>
+<p>每借阅一本图书,lib_book里面数量减一的触发器<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="operator"><span class="keyword">create</span> <span class="keyword">trigger</span> BookDec1</span><br><span class="line"><span class="keyword">on</span> lib_borrow</span><br><span class="line"><span class="keyword">after</span> <span class="keyword">insert</span></span><br><span class="line"><span class="keyword">as</span></span><br><span class="line"><span class="keyword">update</span> lib_book <span class="keyword">set</span> bookres=bookres-<span class="number">1</span></span><br><span class="line"><span class="keyword">from</span> lib_book, inserted</span><br><span class="line"><span class="keyword">where</span></span><br><span class="line">lib_book.bookid=inserted.bookid;</span></span><br></pre></td></tr></table></figure></p>
+<p>每借阅一本图书,相应的从bookbag里面删除的触发器<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="operator"><span class="keyword">create</span> <span class="keyword">trigger</span> BookbagDel</span><br><span class="line"><span class="keyword">on</span> lib_borrow</span><br><span class="line"><span class="keyword">after</span> <span class="keyword">insert</span> </span><br><span class="line"><span class="keyword">as</span></span><br><span class="line"><span class="keyword">delete</span> bookbag</span><br><span class="line"><span class="keyword">where</span> bookid <span class="keyword">in</span> (<span class="keyword">select</span> bookid <span class="keyword">from</span> inserted)</span><br><span class="line"><span class="keyword">and</span> userid <span class="keyword">in</span> (<span class="keyword">select</span> userid <span class="keyword">from</span> inserted);</span></span><br></pre></td></tr></table></figure></p>
+<h4 id="还书SQL语句">还书SQL语句</h4><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="operator"><span class="keyword">use</span> library;</span></span><br><span class="line"><span class="operator"><span class="keyword">update</span> lib_borrow <span class="keyword">set</span> retdate=@<span class="built_in">date</span>, borstate=<span class="string">'1'</span> <span class="keyword">where</span> borid=@borid;</span></span><br></pre></td></tr></table></figure>
+<p>lib_book表加一的触发器<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="operator"><span class="keyword">create</span> <span class="keyword">trigger</span> BookbagDel</span><br><span class="line"><span class="keyword">on</span> lib_borrow</span><br><span class="line"><span class="keyword">after</span> <span class="keyword">update</span></span><br><span class="line"><span class="keyword">as</span></span><br><span class="line"><span class="keyword">update</span> lib_book <span class="keyword">set</span> bookres=bookres+<span class="number">1</span></span><br><span class="line"><span class="keyword">from</span> lib_book, inserted</span><br><span class="line"><span class="keyword">where</span></span><br><span class="line">lib_book.bookid=inserted.bookid;</span></span><br></pre></td></tr></table></figure></p>
+<h4 id="当前借阅信息查询SQL语句">当前借阅信息查询SQL语句</h4><p>多表查询<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="operator"><span class="keyword">use</span> library;</span></span><br><span class="line"><span class="operator"><span class="keyword">select</span> * <span class="keyword">from</span> lib_borrow </span><br><span class="line"><span class="keyword">left</span> <span class="keyword">join</span> lib_book <span class="keyword">on</span> lib_book.bookid=lib_borrow.bookid</span><br><span class="line"><span class="keyword">where</span> lib_borrow.userid=@userid <span class="keyword">and</span> lib_borrow.borstate=<span class="number">0</span>;</span></span><br></pre></td></tr></table></figure></p>
+<h4 id="历史借阅信息查询SQL语句">历史借阅信息查询SQL语句</h4><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="operator"><span class="keyword">use</span> library;</span></span><br><span class="line"><span class="operator"><span class="keyword">select</span> * <span class="keyword">from</span> lib_borrow </span><br><span class="line"><span class="keyword">left</span> <span class="keyword">join</span> lib_book <span class="keyword">on</span> lib_book.bookid=lib_borrow.bookid</span><br><span class="line"><span class="keyword">where</span> lib_borrow.userid=@userid <span class="keyword">and</span> lib_borrow.borstate=<span class="number">1</span>;</span></span><br></pre></td></tr></table></figure>
+<h3 id="图书借阅排行榜">图书借阅排行榜</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="operator"><span class="keyword">select</span> * <span class="keyword">from</span></span><br><span class="line">(<span class="keyword">select</span> bookid, bor_sum=<span class="keyword">COUNT</span>(lib_borrow.bookid) </span><br><span class="line"><span class="keyword">from</span> lib_borrow <span class="keyword">group</span> <span class="keyword">by</span> lib_borrow.bookid) <span class="keyword">as</span> A</span><br><span class="line"><span class="keyword">left</span> <span class="keyword">join</span> (<span class="keyword">select</span> * <span class="keyword">from</span> lib_book) <span class="keyword">as</span> B </span><br><span class="line"><span class="keyword">on</span> A.bookid = B.bookid </span><br><span class="line"><span class="keyword">order</span> <span class="keyword">by</span> A.bor_sum <span class="keyword">desc</span></span></span><br></pre></td></tr></table></figure>
+<h3 id="用户图书借阅排行榜">用户图书借阅排行榜</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="operator"><span class="keyword">select</span> * <span class="keyword">from</span>(<span class="keyword">select</span> userid, user_sum=<span class="keyword">COUNT</span>(lib_borrow.userid)</span><br><span class="line"><span class="keyword">from</span> lib_borrow <span class="keyword">group</span> <span class="keyword">by</span> lib_borrow.userid) <span class="keyword">as</span> A</span><br><span class="line"><span class="keyword">left</span> <span class="keyword">join</span> (<span class="keyword">select</span> userid1=userid,username,usersex,userredp <span class="keyword">from</span> lib_user) <span class="keyword">as</span> B </span><br><span class="line"><span class="keyword">on</span> A.userid = B.userid1 <span class="keyword">order</span> <span class="keyword">by</span> A.user_sum <span class="keyword">desc</span> ;</span></span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/SQL/" rel="tag">#SQL</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2015/11/15/Linuxaddsyscall/" rel="next" title="VMware虚拟机下为Linux内核增加系统调用">
+                <i class="fa fa-chevron-left"></i> VMware虚拟机下为Linux内核增加系统调用
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <div class="ds-share flat" data-thread-key="2015/12/11/sqloflibrary/"
+     data-title="简单的图书馆管理系统数据库设计"
+     data-content=""
+     data-url="http://tenlee2012.github.io/2015/12/11/sqloflibrary/">
+  <div class="ds-share-inline">
+    <ul  class="ds-share-icons-16">
+
+      <li data-toggle="ds-share-icons-more"><a class="ds-more" href="javascript:void(0);">分享到：</a></li>
+      <li><a class="ds-weibo" href="javascript:void(0);" data-service="weibo">微博</a></li>
+      <li><a class="ds-qzone" href="javascript:void(0);" data-service="qzone">QQ空间</a></li>
+      <li><a class="ds-qqt" href="javascript:void(0);" data-service="qqt">腾讯微博</a></li>
+      <li><a class="ds-wechat" href="javascript:void(0);" data-service="wechat">微信</a></li>
+
+    </ul>
+    <div class="ds-share-icons-more">
+    </div>
+  </div>
+</div>
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2015/12/11/sqloflibrary/"
+           data-title="简单的图书馆管理系统数据库设计" data-url="http://tenlee2012.github.io/2015/12/11/sqloflibrary/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/author.jpg"
+               alt="tenlee" />
+          <p class="site-author-name" itemprop="name">tenlee</p>
+          <p class="site-description motion-element" itemprop="description"></p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">18</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+          
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">6</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/tenlee2012" target="_blank">
+                  
+                    <i class="fa fa-github"></i> GitHub
+                  
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+          <div class="cc-license motion-element" itemprop="license">
+            <a href="http://creativecommons.org/licenses/by-nc-sa/4.0" class="cc-opacity" target="_blank">
+              <img src="/images/cc-by-nc-sa.svg" alt="Creative Commons" />
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            <p class="site-author-name">友情链接</p>
+            
+              <span class="links-of-author-item">
+                <a href="http://jzqt.github.io/" target="_blank">JZQT</a>
+              </span>
+            
+          
+        </div>
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc-indicator-top post-toc-indicator">
+            <i class="fa fa-angle-double-up"></i>
+          </div>
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#表的设计及字段说明"><span class="nav-number">1.</span> <span class="nav-text">表的设计及字段说明</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#lib_user"><span class="nav-number">1.0.1.</span> <span class="nav-text">lib_user</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#lib_book"><span class="nav-number">1.0.2.</span> <span class="nav-text">lib_book</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#lib_book_borrow"><span class="nav-number">1.0.3.</span> <span class="nav-text">lib_book_borrow</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#bookbag"><span class="nav-number">1.0.4.</span> <span class="nav-text">bookbag</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#bookbag建表SQL语句"><span class="nav-number">1.1.</span> <span class="nav-text">bookbag建表SQL语句</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#用户登录验证SQL语句"><span class="nav-number">1.2.</span> <span class="nav-text">用户登录验证SQL语句</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#用户密码变更SQL语句"><span class="nav-number">1.3.</span> <span class="nav-text">用户密码变更SQL语句</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#图书检索SQL语句"><span class="nav-number">1.4.</span> <span class="nav-text">图书检索SQL语句</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#添加到书包SQL语句"><span class="nav-number">1.5.</span> <span class="nav-text">添加到书包SQL语句</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#书包查询SQL语句"><span class="nav-number">1.6.</span> <span class="nav-text">书包查询SQL语句</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#从书包删除"><span class="nav-number">1.7.</span> <span class="nav-text">从书包删除</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#借阅图书"><span class="nav-number">1.8.</span> <span class="nav-text">借阅图书</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#还书SQL语句"><span class="nav-number">1.9.</span> <span class="nav-text">还书SQL语句</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#当前借阅信息查询SQL语句"><span class="nav-number">1.10.</span> <span class="nav-text">当前借阅信息查询SQL语句</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#历史借阅信息查询SQL语句"><span class="nav-number">1.11.</span> <span class="nav-text">历史借阅信息查询SQL语句</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#图书借阅排行榜"><span class="nav-number">2.</span> <span class="nav-text">图书借阅排行榜</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#用户图书借阅排行榜"><span class="nav-number">3.</span> <span class="nav-text">用户图书借阅排行榜</span></a></li></ol></div>
+            
+          </div>
+          <div class="post-toc-indicator-bottom post-toc-indicator">
+            <i class="fa fa-angle-double-down"></i>
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2015 - 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">tenlee</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+
+
+      </div>
+    </footer>
+
+    <div class="back-to-top"></div>
+  </div>
+
+  
+
+
+  
+
+
+
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
+
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=0.5.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=0.5.0"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=0.5.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=0.5.0"></script>
+
+
+
+  
+  
+<script type="text/javascript" src="/js/src/scrollspy.js?v=0.5.0"></script>
+
+<script type="text/javascript" id="sidebar.toc.highlight">
+  $(document).ready(function () {
+    var tocSelector = '.post-toc';
+    var $tocSelector = $(tocSelector);
+    var activeCurrentSelector = '.active-current';
+
+    $tocSelector
+      .on('activate.bs.scrollspy', function () {
+        var $currentActiveElement = $(tocSelector + ' .active').last();
+
+        removeCurrentActiveClass();
+        $currentActiveElement.addClass('active-current');
+
+        $tocSelector[0].scrollTop = $currentActiveElement.position().top;
+      })
+      .on('clear.bs.scrollspy', function () {
+        removeCurrentActiveClass();
+      });
+
+    function removeCurrentActiveClass () {
+      $(tocSelector + ' ' + activeCurrentSelector)
+        .removeClass(activeCurrentSelector.substring(1));
+    }
+
+    function processTOC () {
+      getTOCMaxHeight();
+      toggleTOCOverflowIndicators();
+    }
+
+    function getTOCMaxHeight () {
+      var height = $('.sidebar').height() -
+                   $tocSelector.position().top -
+                   $('.post-toc-indicator-bottom').height();
+
+      $tocSelector.css('height', height);
+
+      return height;
+    }
+
+    function toggleTOCOverflowIndicators () {
+      tocOverflowIndicator(
+        '.post-toc-indicator-top',
+        $tocSelector.scrollTop() > 0 ? 'show' : 'hide'
+      );
+
+      tocOverflowIndicator(
+        '.post-toc-indicator-bottom',
+        $tocSelector.scrollTop() >= $tocSelector.find('ol').height() - $tocSelector.height() ? 'hide' : 'show'
+      )
+    }
+
+    $(document).on('sidebar.motion.complete', function () {
+      processTOC();
+    });
+
+    $('body').scrollspy({ target: tocSelector });
+    $(window).on('resize', function () {
+      if ( $('.sidebar').hasClass('sidebar-active') ) {
+        processTOC();
+      }
+    });
+
+    onScroll($tocSelector);
+
+    function onScroll (element) {
+      element.on('mousewheel DOMMouseScroll', function (event) {
+          var oe = event.originalEvent;
+          var delta = oe.wheelDelta || -oe.detail;
+
+          this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
+          event.preventDefault();
+
+          toggleTOCOverflowIndicators();
+      });
+    }
+
+    function tocOverflowIndicator (indicator, action) {
+      var $indicator = $(indicator);
+      var opacity = action === 'show' ? 1 : 0;
+      $indicator.velocity ?
+        $indicator.velocity('stop').velocity({
+          opacity: opacity
+        }, { duration: 100 }) :
+        $indicator.stop().animate({
+          opacity: opacity
+        }, 100);
+    }
+
+  });
+</script>
+
+<script type="text/javascript" id="sidebar.nav">
+  $(document).ready(function () {
+    var html = $('html');
+    var TAB_ANIMATE_DURATION = 200;
+    var hasVelocity = $.isFunction(html.velocity);
+
+    $('.sidebar-nav li').on('click', function () {
+      var item = $(this);
+      var activeTabClassName = 'sidebar-nav-active';
+      var activePanelClassName = 'sidebar-panel-active';
+      if (item.hasClass(activeTabClassName)) {
+        return;
+      }
+
+      var currentTarget = $('.' + activePanelClassName);
+      var target = $('.' + item.data('target'));
+
+      hasVelocity ?
+        currentTarget.velocity('transition.slideUpOut', TAB_ANIMATE_DURATION, function () {
+          target
+            .velocity('stop')
+            .velocity('transition.slideDownIn', TAB_ANIMATE_DURATION)
+            .addClass(activePanelClassName);
+        }) :
+        currentTarget.animate({ opacity: 0 }, TAB_ANIMATE_DURATION, function () {
+          currentTarget.hide();
+          target
+            .stop()
+            .css({'opacity': 0, 'display': 'block'})
+            .animate({ opacity: 1 }, TAB_ANIMATE_DURATION, function () {
+              currentTarget.removeClass(activePanelClassName);
+              target.addClass(activePanelClassName);
+            });
+        });
+
+      item.siblings().removeClass(activeTabClassName);
+      item.addClass(activeTabClassName);
+    });
+
+    $('.post-toc a').on('click', function (e) {
+      e.preventDefault();
+      var targetSelector = NexT.utils.escapeSelector(this.getAttribute('href'));
+      var offset = $(targetSelector).offset().top;
+      hasVelocity ?
+        html.velocity('stop').velocity('scroll', {
+          offset: offset  + 'px',
+          mobileHA: false
+        }) :
+        $('html, body').stop().animate({
+          scrollTop: offset
+        }, 500);
+    });
+
+    // Expand sidebar on post detail page by default, when post has a toc.
+    NexT.motion.middleWares.sidebar = function () {
+      var $tocContent = $('.post-toc-content');
+
+      if (CONFIG.scheme !== 'Pisces' && (CONFIG.sidebar.display === 'post' || CONFIG.sidebar.display === 'always')) {
+        if ($tocContent.length > 0 && $tocContent.html().trim().length > 0) {
+          NexT.utils.displaySidebar();
+        }
+      }
+    };
+  });
+</script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=0.5.0"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"tenlee2012"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+  
+
+
+
+
+
+  
+  
+  
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+  </script>
+
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+      var all = MathJax.Hub.getAllJax(), i;
+      for (i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+      }
+    });
+  </script>
+
+  
+    <script type="text/javascript" src="http://cdn.staticfile.org/mathjax/2.4.0/MathJax.js"></script>
+    <script type="text/javascript" src="http://cdn.staticfile.org/mathjax/2.4.0/config/TeX-AMS-MML_HTMLorMML.js"></script>
+  
+
+
+  
+  
+
+
+</body>
+</html>

@@ -5,7 +5,7 @@
   
   <link href="/atom.xml" rel="self"/>
   <link href="http://tenlee2012.github.io//"/>
-  <updated>2015-07-31T11:39:10.000Z</updated>
+  <updated>2016-03-03T15:23:44.213Z</updated>
   <id>http://tenlee2012.github.io//</id>
   
   <author>
@@ -14,6 +14,296 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title><![CDATA[简单的图书馆管理系统数据库设计]]></title>
+    <link href="http://tenlee2012.github.io/2015/12/11/sqloflibrary/"/>
+    <id>http://tenlee2012.github.io/2015/12/11/sqloflibrary/</id>
+    <published>2015-12-11T06:02:17.000Z</published>
+    <updated>2016-03-03T15:23:44.213Z</updated>
+    <content type="html"><![CDATA[<p>最近.Net课程需要做一个简单的图书管理系统。<br>于是就把这个简单的数据库设计放了上来，用于备忘。<br><a id="more"></a></p>
+<h3 id="表的设计及字段说明">表的设计及字段说明</h3><h5 id="lib_user">lib_user</h5><table>
+<thead>
+<tr>
+<th>字段</th>
+<th style="text-align:center">数据类型</th>
+<th style="text-align:right">作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>userid</td>
+<td style="text-align:center">varchar(50)</td>
+<td style="text-align:right">主键,学号,可用于登录</td>
+</tr>
+<tr>
+<td>userpassword</td>
+<td style="text-align:center">varchar(50)</td>
+<td style="text-align:right">密码</td>
+</tr>
+<tr>
+<td>username</td>
+<td style="text-align:center">varchar(50)</td>
+<td style="text-align:right">用户姓名</td>
+</tr>
+<tr>
+<td>userredp</td>
+<td style="text-align:center">varchar(50)</td>
+<td style="text-align:right">院系</td>
+</tr>
+</tbody>
+</table>
+<p>其他自己扩展</p>
+<h5 id="lib_book">lib_book</h5><table>
+<thead>
+<tr>
+<th>字段</th>
+<th style="text-align:center">数据类型</th>
+<th style="text-align:right">作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>bookid</td>
+<td style="text-align:center">int</td>
+<td style="text-align:right">自增主键</td>
+</tr>
+<tr>
+<td>bookname</td>
+<td style="text-align:center">varchar(50)</td>
+<td style="text-align:right">xx</td>
+</tr>
+<tr>
+<td>bookname</td>
+<td style="text-align:center">varchar(50)</td>
+<td style="text-align:right">xx</td>
+</tr>
+<tr>
+<td>bookname</td>
+<td style="text-align:center">varchar(50)</td>
+<td style="text-align:right">xx</td>
+</tr>
+<tr>
+<td>bookname</td>
+<td style="text-align:center">varchar(50)</td>
+<td style="text-align:right">xx</td>
+</tr>
+<tr>
+<td>bookname</td>
+<td style="text-align:center">varchar(50)</td>
+<td style="text-align:right">xx</td>
+</tr>
+</tbody>
+</table>
+<p>其他自己扩展</p>
+<h5 id="lib_book_borrow">lib_book_borrow</h5><table>
+<thead>
+<tr>
+<th>字段</th>
+<th style="text-align:center">数据类型</th>
+<th style="text-align:right">作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>borid</td>
+<td style="text-align:center">int</td>
+<td style="text-align:right">自增主键</td>
+</tr>
+<tr>
+<td>bookid</td>
+<td style="text-align:center">int</td>
+<td style="text-align:right">lib_book外键</td>
+</tr>
+<tr>
+<td>userid</td>
+<td style="text-align:center">varchar(50)</td>
+<td style="text-align:right">lib_user外键</td>
+</tr>
+<tr>
+<td>bordate</td>
+<td style="text-align:center">date</td>
+<td style="text-align:right">借阅日期</td>
+</tr>
+<tr>
+<td>retdate</td>
+<td style="text-align:center">date</td>
+<td style="text-align:right">还书日期</td>
+</tr>
+<tr>
+<td>borstate</td>
+<td style="text-align:center">int</td>
+<td style="text-align:right">借阅状态(正在借阅,已经还书,续借,已经过期)</td>
+</tr>
+</tbody>
+</table>
+<h5 id="bookbag">bookbag</h5><table>
+<thead>
+<tr>
+<th>字段</th>
+<th style="text-align:center">数据类型</th>
+<th style="text-align:right">作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>bookid</td>
+<td style="text-align:center">int</td>
+<td style="text-align:right">lib_book外键</td>
+</tr>
+<tr>
+<td>usreid</td>
+<td style="text-align:center">varchar(50)</td>
+<td style="text-align:right">lib_user外键</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h4 id="bookbag建表SQL语句">bookbag建表SQL语句</h4><p>其他类似,暂列一个<br><figure class="highlight lisp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">CREATE TABLE lib_borinfo</span><br><span class="line"><span class="list">(</span><br><span class="line"><span class="keyword">userid</span> varchar<span class="list">(<span class="number">50</span>)</span><span class="comment">;</span></span><br><span class="line">bookid int<span class="comment">;</span></span><br><span class="line">FOREIGN KEY <span class="list">(<span class="keyword">userid</span>)</span> REFERENCES lib_user<span class="list">(<span class="keyword">userid</span>)</span><span class="comment">;</span></span><br><span class="line">FOREIGN KEY <span class="list">(<span class="keyword">bookid</span>)</span> REFERENCES lib_book<span class="list">(<span class="keyword">bookid</span>)</span><span class="comment">;</span></span><br><span class="line">ADD CONSTRAINT unique_bor_book UNIQUE <span class="list">(<span class="keyword">userid</span>,bookid)</span><span class="comment">;</span></span><br><span class="line">)</span></span><br></pre></td></tr></table></figure></p>
+<h4 id="用户登录验证SQL语句">用户登录验证SQL语句</h4><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="operator"><span class="keyword">select</span> * <span class="keyword">from</span> lib_user <span class="keyword">where</span>(userid=@userid, userpassword=@<span class="keyword">password</span>)</span></span><br></pre></td></tr></table></figure>
+<h4 id="用户密码变更SQL语句">用户密码变更SQL语句</h4><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="operator"><span class="keyword">update</span> lib_user <span class="keyword">set</span> userpassword=@<span class="keyword">password</span></span></span><br></pre></td></tr></table></figure>
+<h4 id="图书检索SQL语句">图书检索SQL语句</h4><p>暂且列一个以图书名搜索的,其他类似<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="operator"><span class="keyword">select</span> * <span class="keyword">from</span> lib_user <span class="keyword">where</span>(bookname=@bookname);</span></span><br></pre></td></tr></table></figure></p>
+<h4 id="添加到书包SQL语句">添加到书包SQL语句</h4><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="operator"><span class="keyword">use</span> library;</span></span><br><span class="line"><span class="operator"><span class="keyword">insert</span> <span class="keyword">into</span> bookbag(userid, bookid) <span class="keyword">values</span> (@userid, @bookid);</span></span><br></pre></td></tr></table></figure>
+<h4 id="书包查询SQL语句">书包查询SQL语句</h4><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="operator"><span class="keyword">use</span> library;</span></span><br><span class="line"><span class="operator"><span class="keyword">select</span> * <span class="keyword">from</span> lib_book <span class="keyword">where</span></span><br><span class="line">(bookid <span class="keyword">in</span> (<span class="keyword">select</span> bookid <span class="keyword">from</span> bookbag <span class="keyword">where</span> userid=@userid));</span></span><br></pre></td></tr></table></figure>
+<h4 id="从书包删除">从书包删除</h4><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="operator"><span class="keyword">use</span> library;</span></span><br><span class="line"><span class="operator"><span class="keyword">delete</span> <span class="keyword">from</span> bookbag(userid, bookid) <span class="keyword">values</span> (@userid, @bookid);</span></span><br></pre></td></tr></table></figure>
+<h4 id="借阅图书">借阅图书</h4><p>因为书可能是一起借,但是不一定同时还啊,所以必须一本书,对应一个borid.<br><figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="title">use</span> library;</span><br><span class="line"><span class="title">insert</span> into lib_borrow(borid,bookid,userid,bordate,retdate,borstate) </span><br><span class="line">values (<span class="variable">@borid</span>, <span class="variable">@bookid</span>,<span class="variable">@userid</span>,<span class="variable">@bordate</span>,<span class="variable">@retdate</span>,<span class="variable">@borstate</span>);</span><br></pre></td></tr></table></figure></p>
+<p>每借阅一本图书,lib_book里面数量减一的触发器<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="operator"><span class="keyword">create</span> <span class="keyword">trigger</span> BookDec1</span><br><span class="line"><span class="keyword">on</span> lib_borrow</span><br><span class="line"><span class="keyword">after</span> <span class="keyword">insert</span></span><br><span class="line"><span class="keyword">as</span></span><br><span class="line"><span class="keyword">update</span> lib_book <span class="keyword">set</span> bookres=bookres-<span class="number">1</span></span><br><span class="line"><span class="keyword">from</span> lib_book, inserted</span><br><span class="line"><span class="keyword">where</span></span><br><span class="line">lib_book.bookid=inserted.bookid;</span></span><br></pre></td></tr></table></figure></p>
+<p>每借阅一本图书,相应的从bookbag里面删除的触发器<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="operator"><span class="keyword">create</span> <span class="keyword">trigger</span> BookbagDel</span><br><span class="line"><span class="keyword">on</span> lib_borrow</span><br><span class="line"><span class="keyword">after</span> <span class="keyword">insert</span> </span><br><span class="line"><span class="keyword">as</span></span><br><span class="line"><span class="keyword">delete</span> bookbag</span><br><span class="line"><span class="keyword">where</span> bookid <span class="keyword">in</span> (<span class="keyword">select</span> bookid <span class="keyword">from</span> inserted)</span><br><span class="line"><span class="keyword">and</span> userid <span class="keyword">in</span> (<span class="keyword">select</span> userid <span class="keyword">from</span> inserted);</span></span><br></pre></td></tr></table></figure></p>
+<h4 id="还书SQL语句">还书SQL语句</h4><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="operator"><span class="keyword">use</span> library;</span></span><br><span class="line"><span class="operator"><span class="keyword">update</span> lib_borrow <span class="keyword">set</span> retdate=@<span class="built_in">date</span>, borstate=<span class="string">'1'</span> <span class="keyword">where</span> borid=@borid;</span></span><br></pre></td></tr></table></figure>
+<p>lib_book表加一的触发器<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="operator"><span class="keyword">create</span> <span class="keyword">trigger</span> BookbagDel</span><br><span class="line"><span class="keyword">on</span> lib_borrow</span><br><span class="line"><span class="keyword">after</span> <span class="keyword">update</span></span><br><span class="line"><span class="keyword">as</span></span><br><span class="line"><span class="keyword">update</span> lib_book <span class="keyword">set</span> bookres=bookres+<span class="number">1</span></span><br><span class="line"><span class="keyword">from</span> lib_book, inserted</span><br><span class="line"><span class="keyword">where</span></span><br><span class="line">lib_book.bookid=inserted.bookid;</span></span><br></pre></td></tr></table></figure></p>
+<h4 id="当前借阅信息查询SQL语句">当前借阅信息查询SQL语句</h4><p>多表查询<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="operator"><span class="keyword">use</span> library;</span></span><br><span class="line"><span class="operator"><span class="keyword">select</span> * <span class="keyword">from</span> lib_borrow </span><br><span class="line"><span class="keyword">left</span> <span class="keyword">join</span> lib_book <span class="keyword">on</span> lib_book.bookid=lib_borrow.bookid</span><br><span class="line"><span class="keyword">where</span> lib_borrow.userid=@userid <span class="keyword">and</span> lib_borrow.borstate=<span class="number">0</span>;</span></span><br></pre></td></tr></table></figure></p>
+<h4 id="历史借阅信息查询SQL语句">历史借阅信息查询SQL语句</h4><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="operator"><span class="keyword">use</span> library;</span></span><br><span class="line"><span class="operator"><span class="keyword">select</span> * <span class="keyword">from</span> lib_borrow </span><br><span class="line"><span class="keyword">left</span> <span class="keyword">join</span> lib_book <span class="keyword">on</span> lib_book.bookid=lib_borrow.bookid</span><br><span class="line"><span class="keyword">where</span> lib_borrow.userid=@userid <span class="keyword">and</span> lib_borrow.borstate=<span class="number">1</span>;</span></span><br></pre></td></tr></table></figure>
+<h3 id="图书借阅排行榜">图书借阅排行榜</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="operator"><span class="keyword">select</span> * <span class="keyword">from</span></span><br><span class="line">(<span class="keyword">select</span> bookid, bor_sum=<span class="keyword">COUNT</span>(lib_borrow.bookid) </span><br><span class="line"><span class="keyword">from</span> lib_borrow <span class="keyword">group</span> <span class="keyword">by</span> lib_borrow.bookid) <span class="keyword">as</span> A</span><br><span class="line"><span class="keyword">left</span> <span class="keyword">join</span> (<span class="keyword">select</span> * <span class="keyword">from</span> lib_book) <span class="keyword">as</span> B </span><br><span class="line"><span class="keyword">on</span> A.bookid = B.bookid </span><br><span class="line"><span class="keyword">order</span> <span class="keyword">by</span> A.bor_sum <span class="keyword">desc</span></span></span><br></pre></td></tr></table></figure>
+<h3 id="用户图书借阅排行榜">用户图书借阅排行榜</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="operator"><span class="keyword">select</span> * <span class="keyword">from</span>(<span class="keyword">select</span> userid, user_sum=<span class="keyword">COUNT</span>(lib_borrow.userid)</span><br><span class="line"><span class="keyword">from</span> lib_borrow <span class="keyword">group</span> <span class="keyword">by</span> lib_borrow.userid) <span class="keyword">as</span> A</span><br><span class="line"><span class="keyword">left</span> <span class="keyword">join</span> (<span class="keyword">select</span> userid1=userid,username,usersex,userredp <span class="keyword">from</span> lib_user) <span class="keyword">as</span> B </span><br><span class="line"><span class="keyword">on</span> A.userid = B.userid1 <span class="keyword">order</span> <span class="keyword">by</span> A.user_sum <span class="keyword">desc</span> ;</span></span><br></pre></td></tr></table></figure>
+]]></content>
+    <summary type="html">
+    <![CDATA[<p>最近.Net课程需要做一个简单的图书管理系统。<br>于是就把这个简单的数据库设计放了上来，用于备忘。<br>]]>
+    
+    </summary>
+    
+      <category term="SQL" scheme="http://tenlee2012.github.io/tags/SQL/"/>
+    
+  </entry>
+  
+  <entry>
+    <title><![CDATA[VMware虚拟机下为Linux内核增加系统调用]]></title>
+    <link href="http://tenlee2012.github.io/2015/11/15/Linuxaddsyscall/"/>
+    <id>http://tenlee2012.github.io/2015/11/15/Linuxaddsyscall/</id>
+    <published>2015-11-15T07:45:17.000Z</published>
+    <updated>2016-03-03T15:19:42.597Z</updated>
+    <content type="html"><![CDATA[<p><strong><a href="http://tenlee.info/2015/11/15/Linuxaddsyscall/" target="_blank" rel="external">http://tenlee.info/2015/11/15/Linuxaddsyscall/</a></strong></p>
+<h3 id="第一步：">第一步：</h3><p>去此网址  <a href="http://www.kernel.org/" target="_blank" rel="external">http://www.kernel.org/</a> 下载自己想要的内核源码，建议3.10.93，本人下载的就是3.10.93，测试成功</p>
+<p>Ubuntu安装menuconfig，如下命令复制到终端<br><figure class="highlight q"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-<span class="built_in">get</span> install libncurses5-<span class="built_in">dev</span></span><br></pre></td></tr></table></figure></p>
+<a id="more"></a>
+<h3 id="第二步：">第二步：</h3><p>将下载好的tar.xz压缩包解压到 /usr/src/文件夹下，在终端输入如下命令<br><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo tar -xvf linux-<span class="number">3.10</span>.<span class="number">93</span><span class="class">.tar</span><span class="class">.xz</span> -C /usr/src/</span><br></pre></td></tr></table></figure></p>
+<p>并进入该文件夹，如下命令<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> /usr/src/linux-<span class="number">3.10</span>.<span class="number">93</span></span><br></pre></td></tr></table></figure></p>
+<h3 id="第三步：">第三步：</h3><p>将原来的配置文件拷过来,<br>先到<code>/usr/src/linux-3.10.93</code>文件夹底下<br><code>cd /usr/src/linux-3.10.93</code><br>由于我当前的Ubuntu内核版本是3.19.0.25，所以我的配置文件是 <code>/usr/src/linux-headers-3.19.0-25-generic/.config</code> 这个文件，你的对应的只是不同的版本号</p>
+<p><code>uname -a</code>查看当前系统内核。我在终端执行如下命令：</p>
+<figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo cp <span class="regexp">/usr/</span>src<span class="regexp">/linux-headers-3.19.0-25-generic/</span>.config .config</span><br></pre></td></tr></table></figure>
+<h3 id="第四步：">第四步：</h3><p>改内核的系统调用库函数，进入arch/x86/syscalls文件夹(因为我是32位，所以进入x86)，修改syscall_32.tbl，<br>执行如下命令<br><figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo vim <span class="regexp">/usr/</span>src<span class="regexp">/linux-3.10.93arch/</span>x86<span class="regexp">/syscalls/</span>syscall_32.tbl</span><br></pre></td></tr></table></figure></p>
+<p>在最后一行添加自己的系统调用, 如下<br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">351   i386   lsproc          sys_lsproc</span><br></pre></td></tr></table></figure></p>
+<p><img src="http://images2015.cnblogs.com/blog/743656/201511/743656-20151115005403040-2104708170.png" alt=""></p>
+<h3 id="第五步：">第五步：</h3><p>声明一下函数原型，在 syscall.h中<br><code>sudo vim include/linux/syscalls.h</code>，不懂vim的用<code>sudo gedit include/linux/syscalls.h</code></p>
+<p>在最后添加 函数原型：<code>asmlinkage int sys_lsproc(int num);</code><br><img src="http://images2015.cnblogs.com/blog/743656/201511/743656-20151115005641025-170146994.png" alt=""></p>
+<h3 id="第六步：">第六步：</h3><p>定义自己的系统调用函数, 进入 kernel 文件夹，执行命令 <code>sudo vim kernel/sys.c</code>，添加自己定义的函数<br><img src="http://images2015.cnblogs.com/blog/743656/201511/743656-20151115005809603-1519129048.png" alt=""></p>
+<h3 id="第七步：配置内核，">第七步：配置内核，</h3><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo <span class="built_in">make</span> menuconfig</span><br></pre></td></tr></table></figure>
+<p>这个时候，终端的窗口最好最大化，否则可能会报错。<br><img src="http://images2015.cnblogs.com/blog/743656/201511/743656-20151115010040103-762537074.png" alt=""></p>
+<p>选Load，然后Ok，然后Save。</p>
+<p>依次执行如下命令，要慢慢等待。<br><figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">make</span> bzImage <span class="comment">//生成新内核</span></span><br><span class="line"><span class="built_in">make</span> modules <span class="comment">//编译模块 </span></span><br><span class="line"><span class="built_in">make</span> modules_install  <span class="comment">//安装模块</span></span><br><span class="line"><span class="built_in">make</span> install  <span class="comment">// 安装内核</span></span><br></pre></td></tr></table></figure></p>
+<p>安装成功之后重启虚拟机，重启的时候按着ESC键（此时的鼠标应该定位在虚拟机里面），进入Ubuntu grub界面，选择Ubuntu高级选项，选择3.10内核<br><img src="http://images2015.cnblogs.com/blog/743656/201511/743656-20151115010329150-1973687166.png" alt=""><br><img src="http://images2015.cnblogs.com/blog/743656/201511/743656-20151115010422712-1273325430.png" alt=""></p>
+<h3 id="第八步：">第八步：</h3><p>进入了3.10内核，编写 test.c文件，使用自己的系统调用，<br>小白 终端调用 输入命令    gedit test.c，写一下内容<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="preprocessor">#<span class="keyword">include</span> &lt;linux/unistd.h&gt; </span></span><br><span class="line"><span class="preprocessor">#<span class="keyword">include</span> &lt;sys/syscall.h&gt; </span></span><br><span class="line"><span class="comment">//系统调用号根据实验具体 </span></span><br><span class="line"><span class="comment">//#define __NR_ mysyscall 223 </span></span><br><span class="line"><span class="comment">//数字而定 </span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span><br><span class="line"></span>&#123; </span><br><span class="line">    syscall(<span class="number">351</span>， <span class="number">1</span>)<span class="comment">//依次是调用号，参数</span></span><br><span class="line">     <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p><img src="http://images2015.cnblogs.com/blog/743656/201511/743656-20151115010606275-272322633.png" alt=""></p>
+<p>编译并运行。</p>
+<p><img src="http://images2015.cnblogs.com/blog/743656/201511/743656-20151115010838790-2059428381.png" alt=""></p>
+<p>输出成功，结束</p>
+]]></content>
+    <summary type="html">
+    <![CDATA[<p><strong><a href="http://tenlee.info/2015/11/15/Linuxaddsyscall/">http://tenlee.info/2015/11/15/Linuxaddsyscall/</a></strong></p>
+<h3 id="第一步：">第一步：</h3><p>去此网址  <a href="http://www.kernel.org/">http://www.kernel.org/</a> 下载自己想要的内核源码，建议3.10.93，本人下载的就是3.10.93，测试成功</p>
+<p>Ubuntu安装menuconfig，如下命令复制到终端<br><figure class="highlight q"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-<span class="built_in">get</span> install libncurses5-<span class="built_in">dev</span></span><br></pre></td></tr></table></figure></p>]]>
+    
+    </summary>
+    
+      <category term="Linux" scheme="http://tenlee2012.github.io/tags/Linux/"/>
+    
+  </entry>
+  
+  <entry>
+    <title><![CDATA[Python3下Django链接Mysql]]></title>
+    <link href="http://tenlee2012.github.io/2015/08/11/python3connectionmysql/"/>
+    <id>http://tenlee2012.github.io/2015/08/11/python3connectionmysql/</id>
+    <published>2015-08-11T12:11:17.000Z</published>
+    <updated>2016-03-03T15:14:12.064Z</updated>
+    <content type="html"><![CDATA[<h2 id="前提">前提</h2><h4 id="首先安装好Django">首先安装好Django</h4><h4 id="安装PyMySQL">安装PyMySQL</h4><p><code>pip-python3 install PyMySQL</code></p>
+<ol>
+<li><code>django-admin startproject project</code></li>
+<li><code>`django-admin startapp app</code></li>
+<li>修改项目目录下的 <code>settings.py</code></li>
+</ol>
+<a id="more"></a>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">DATABASES = &#123;</span><br><span class="line">    <span class="string">'default'</span>: &#123;</span><br><span class="line">        <span class="string">'ENGINE'</span>: <span class="string">'django.db.backends.mysql'</span>, <span class="comment">#数据库引擎</span></span><br><span class="line">        <span class="string">'NAME'</span>: <span class="string">'test'</span>,       <span class="comment">#数据库名</span></span><br><span class="line">        <span class="string">'USER'</span>: <span class="string">'root'</span>,       <span class="comment">#用户名</span></span><br><span class="line">        <span class="string">'PASSWORD'</span>: <span class="string">'root'</span>,   <span class="comment">#密码</span></span><br><span class="line">        <span class="string">'HOST'</span>: <span class="string">''</span>,           <span class="comment">#数据库主机，默认为localhost</span></span><br><span class="line">        <span class="string">'PORT'</span>: <span class="string">''</span>,           <span class="comment">#数据库端口，MySQL默认为3306</span></span><br><span class="line">        <span class="string">'OPTIONS'</span>: &#123;</span><br><span class="line">            <span class="string">'autocommit'</span>: <span class="keyword">True</span>,</span><br><span class="line">        &#125;,</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ol>
+<li><p>修改项目目录的 <code>__init__.py</code>,添加如下</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">import pymysql</span><br><span class="line">pymysql.<span class="function"><span class="title">install_as_MySQLdb</span><span class="params">()</span></span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>测试 进入<code>python manager.py shell</code></p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; from django<span class="class">.db</span> import connection</span><br><span class="line">&gt;&gt;&gt; <span class="attribute">cursor</span> = connection.<span class="function"><span class="title">cursor</span><span class="params">()</span></span></span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+]]></content>
+    <summary type="html">
+    <![CDATA[<h2 id="前提">前提</h2><h4 id="首先安装好Django">首先安装好Django</h4><h4 id="安装PyMySQL">安装PyMySQL</h4><p><code>pip-python3 install PyMySQL</code></p>
+<ol>
+<li><code>django-admin startproject project</code></li>
+<li><code>`django-admin startapp app</code></li>
+<li>修改项目目录下的 <code>settings.py</code></li>
+</ol>]]>
+    
+    </summary>
+    
+      <category term="Python" scheme="http://tenlee2012.github.io/tags/Python/"/>
+    
+  </entry>
+  
+  <entry>
+    <title><![CDATA[Python3实现HDUOJ模拟提交]]></title>
+    <link href="http://tenlee2012.github.io/2015/08/06/Python3%E5%AE%9E%E7%8E%B0HDUOJ%E6%A8%A1%E6%8B%9F%E6%8F%90%E4%BA%A4/"/>
+    <id>http://tenlee2012.github.io/2015/08/06/Python3实现HDUOJ模拟提交/</id>
+    <published>2015-08-06T12:29:17.000Z</published>
+    <updated>2016-03-03T15:11:08.647Z</updated>
+    <content type="html"><![CDATA[<p>下午闲来无事,顺手一写</p>
+<p>主要用到了 <a href="http://cn.python-requests.org/zh_CN/latest/" target="_blank" rel="external">Requests</a> 模块实现模拟登陆,提交.有中文说明文档<br><a href="http://www.crummy.com/software/BeautifulSoup/bs3/documentation.zh.html" target="_blank" rel="external">Beautiful Soup</a>, 很强大的HTML/XML的解析器,没用上.<br>$Python大法好,不到50行即可搞定$</p>
+<a id="more"></a>
+<p>Python代码<br><figure class="highlight nix"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/env python3</span></span><br><span class="line"><span class="comment">#coding=utf-8</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">import</span> requests, json</span><br><span class="line">from bs4 <span class="built_in">import</span> BeautifulSoup</span><br><span class="line"><span class="built_in">import</span> os</span><br><span class="line"><span class="built_in">import</span> os.path</span><br><span class="line"><span class="built_in">import</span> time</span><br><span class="line"></span><br><span class="line"><span class="variable">sub_dir =</span> <span class="string">"/home/acm/Desktop/ACM_Code/HDUOJ/"</span> <span class="comment">#最后那个斜杠一定要加</span></span><br><span class="line"><span class="variable">uname =</span> input(<span class="string">"请输入用户名: "</span>)</span><br><span class="line"><span class="variable">upass =</span> input(<span class="string">"请输入密码: "</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">#获取该目录下所有文件</span></span><br><span class="line"><span class="variable">all_file =</span> os.listdir(sub_dir)</span><br><span class="line"><span class="variable">login_url =</span> <span class="string">"http://acm.hdu.edu.cn/userloginex.php?action=login"</span></span><br><span class="line"><span class="variable">sub_url =</span> <span class="string">"http://acm.hdu.edu.cn/submit.php?action=submit"</span></span><br><span class="line"></span><br><span class="line"><span class="variable">login_data =</span> &#123;'username': uname, <span class="string">"userpass"</span>: upass,</span><br><span class="line">        <span class="string">"login"</span>:<span class="string">"Sign In"</span>&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">#保持会话</span></span><br><span class="line"><span class="variable">cookieJar =</span> requests.cookies.RequestsCookieJar()</span><br><span class="line"><span class="variable">session =</span> requests.Session()</span><br><span class="line"></span><br><span class="line">    <span class="comment">#登陆</span></span><br><span class="line">    <span class="variable">login_resp =</span> session.request(<span class="string">"POST"</span>, login_url, </span><br><span class="line">            <span class="variable">cookies=</span>cookieJar, <span class="variable">data=</span>login_data) </span><br><span class="line"></span><br><span class="line">for fname <span class="keyword">in</span> all_file:</span><br><span class="line">    <span class="variable">proid =</span> int(fname[<span class="number">3</span>:<span class="number">7</span>])</span><br><span class="line">    <span class="variable">subcode =</span> open(sub_dir+fname).read()</span><br><span class="line">    print(<span class="string">"正在提交"</span> + str(proid))</span><br><span class="line"></span><br><span class="line">    <span class="variable">submit_data =</span> &#123;<span class="string">"check"</span>: <span class="number">0</span>, <span class="string">"problemid"</span>: proid, </span><br><span class="line">    <span class="string">"language"</span>: <span class="number">0</span>, <span class="string">"usercode"</span>:subcode&#125;</span><br><span class="line">    <span class="comment">#提交</span></span><br><span class="line">    <span class="variable">r =</span> session.request(<span class="string">"POST"</span>, sub_url, <span class="variable">cookies=</span>cookieJar, </span><br><span class="line">            <span class="variable">data=</span>submit_data)</span><br><span class="line"></span><br><span class="line">    print(<span class="string">"提交完成"</span>)</span><br><span class="line">    time.sleep(<span class="number">1</span>)</span><br></pre></td></tr></table></figure></p>
+]]></content>
+    <summary type="html">
+    <![CDATA[<p>下午闲来无事,顺手一写</p>
+<p>主要用到了 <a href="http://cn.python-requests.org/zh_CN/latest/">Requests</a> 模块实现模拟登陆,提交.有中文说明文档<br><a href="http://www.crummy.com/software/BeautifulSoup/bs3/documentation.zh.html">Beautiful Soup</a>, 很强大的HTML/XML的解析器,没用上.<br>$Python大法好,不到50行即可搞定$</p>]]>
+    
+    </summary>
+    
+      <category term="Python" scheme="http://tenlee2012.github.io/tags/Python/"/>
+    
+  </entry>
+  
+  <entry>
+    <title><![CDATA[下载HDUOJ所有AC题目代码]]></title>
+    <link href="http://tenlee2012.github.io/2015/08/05/downloadhuojacceptcode/"/>
+    <id>http://tenlee2012.github.io/2015/08/05/downloadhuojacceptcode/</id>
+    <published>2015-08-05T10:53:17.000Z</published>
+    <updated>2016-03-03T15:12:09.412Z</updated>
+    <content type="html"><![CDATA[<p>通过对杭电OJ的观察,很容易找到规律,根据此规则写相应的代码.<br><a href="http://requests-docs-cn.readthedocs.org/zh_CN/latest/user/advanced.html" target="_blank" rel="external">Requests</a> 实现模拟登陆<br>需要用 <a href="http://beautifulsoup.readthedocs.org/zh_CN/latest/" target="_blank" rel="external">BeautifulSoup</a> 处理 status 页面的表格, 获得runid,problemid,代码链接,其实runid就是代码链接</p>
+<a id="more"></a>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/env python3</span></span><br><span class="line"><span class="comment">#coding=utf-8</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> bs4 <span class="keyword">import</span> BeautifulSoup </span><br><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">saveFile</span><span class="params">(data, fname = <span class="string">"temp.html"</span>)</span>:</span></span><br><span class="line">    <span class="keyword">with</span> open(fname, <span class="string">"w"</span>) <span class="keyword">as</span> f:</span><br><span class="line">        f.write(data)</span><br><span class="line">        print(fname + <span class="string">'保存成功'</span>)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">getCode</span><span class="params">(codeurl, proid)</span>:</span></span><br><span class="line">    url = hdu_url + codeurl</span><br><span class="line">    code_html = session.get(url, cookies=cookieJar)</span><br><span class="line">    code_html.encoding = <span class="string">'gb2312'</span></span><br><span class="line">    data = code_html.text</span><br><span class="line">    soup = BeautifulSoup(data) <span class="comment">#初始化</span></span><br><span class="line">    code = soup.textarea.text <span class="comment">#代码区域的标签tag</span></span><br><span class="line">    saveFile(code, <span class="string">'HDU'</span>+proid + <span class="string">'.cpp'</span>) <span class="comment">#保存路径以及文件名,我的格式是当前目录,文件名规则为HDU1001.cpp</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">getStatus</span><span class="params">()</span>:</span></span><br><span class="line">    first = <span class="string">''</span></span><br><span class="line">    vis = set() <span class="comment">#标记是否保存过</span></span><br><span class="line">    <span class="keyword">while</span>(<span class="keyword">True</span>):</span><br><span class="line">        payload = &#123;<span class="string">'first'</span>:first, <span class="string">"user"</span>:uname, <span class="string">"pid"</span>:<span class="string">""</span>, <span class="string">"lang"</span>:<span class="string">""</span>, <span class="string">"status"</span>:<span class="number">5</span>&#125;</span><br><span class="line">        status_html = session.get(status_url, cookies=cookieJar, params=payload)</span><br><span class="line">        print(status_html.url)</span><br><span class="line">        status_html.encoding = <span class="string">'gb2312'</span> <span class="comment">#设置编码</span></span><br><span class="line">        data = status_html.text <span class="comment">#转换成str</span></span><br><span class="line">        soup = BeautifulSoup(data) <span class="comment">#初始化</span></span><br><span class="line">        runid = <span class="string">""</span> <span class="comment">#每次将first初始化为空</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> table <span class="keyword">in</span> soup.findAll(<span class="string">'table'</span>):</span><br><span class="line">            <span class="keyword">for</span> row <span class="keyword">in</span> table.findAll(<span class="string">'tr'</span>):</span><br><span class="line">                i = <span class="number">100</span></span><br><span class="line">                <span class="keyword">for</span> tr <span class="keyword">in</span> row.findAll(<span class="string">'td'</span>):</span><br><span class="line">                    <span class="keyword">if</span>(len(tr.text) == <span class="number">8</span> <span class="keyword">and</span> <span class="string">'1'</span> <span class="keyword">in</span> tr.text): <span class="comment">#找到RunId</span></span><br><span class="line">                        runid = tr.text</span><br><span class="line">                        i = <span class="number">0</span></span><br><span class="line">                    <span class="keyword">if</span>(i == <span class="number">3</span>):</span><br><span class="line">                        proid = tr.text</span><br><span class="line">                        <span class="keyword">if</span>(proid <span class="keyword">in</span> vis):</span><br><span class="line">                            <span class="keyword">break</span></span><br><span class="line">                        <span class="keyword">else</span>:</span><br><span class="line">                            vis |= &#123;proid&#125; <span class="comment">#保存过的代码,不再重新保存,节省时间</span></span><br><span class="line">                    <span class="keyword">if</span>(i == <span class="number">6</span>):</span><br><span class="line">                        getCode(tr.a.get(<span class="string">'href'</span>), proid) <span class="comment">#获取到代码的链接,保存代码</span></span><br><span class="line">                        time.sleep(<span class="number">1</span>) <span class="comment">#休眠一秒,不然服务器反应不过来</span></span><br><span class="line">                    i += <span class="number">1</span>      </span><br><span class="line">        <span class="keyword">if</span>(runid == <span class="string">''</span>): <span class="comment">#本页没有runid, 说明是最后一页</span></span><br><span class="line">            <span class="keyword">break</span></span><br><span class="line">        first = str(int(runid)-<span class="number">1</span>) <span class="comment">#下一页 是以本页最后一个Runid - 1,规律</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">uname = input(<span class="string">"请输入用户名: "</span>)</span><br><span class="line">upass = input(<span class="string">"请输入密码: "</span>)</span><br><span class="line"></span><br><span class="line">hdu_url = <span class="string">"http://acm.hdu.edu.cn/"</span></span><br><span class="line">login_url = hdu_url + <span class="string">"userloginex.php?action=login"</span></span><br><span class="line">status_url = hdu_url + <span class="string">"status.php"</span></span><br><span class="line"></span><br><span class="line">login_data = &#123;<span class="string">'username'</span>: uname, <span class="string">"userpass"</span>: upass,</span><br><span class="line">        <span class="string">"login"</span>:<span class="string">"Sign In"</span>&#125;</span><br><span class="line"><span class="comment">#保持会话</span></span><br><span class="line">cookieJar = requests.cookies.RequestsCookieJar()</span><br><span class="line">session = requests.Session()</span><br><span class="line"></span><br><span class="line"><span class="comment">#登陆</span></span><br><span class="line">login_resp = session.request(<span class="string">"POST"</span>, login_url, </span><br><span class="line">        cookies=cookieJar, data=login_data)</span><br><span class="line"></span><br><span class="line">getStatus()</span><br></pre></td></tr></table></figure>
+]]></content>
+    <summary type="html">
+    <![CDATA[<p>通过对杭电OJ的观察,很容易找到规律,根据此规则写相应的代码.<br><a href="http://requests-docs-cn.readthedocs.org/zh_CN/latest/user/advanced.html">Requests</a> 实现模拟登陆<br>需要用 <a href="http://beautifulsoup.readthedocs.org/zh_CN/latest/">BeautifulSoup</a> 处理 status 页面的表格, 获得runid,problemid,代码链接,其实runid就是代码链接</p>]]>
+    
+    </summary>
+    
+      <category term="Python" scheme="http://tenlee2012.github.io/tags/Python/"/>
+    
+  </entry>
   
   <entry>
     <title><![CDATA[HDU 5328 Problem Killer(2015多校联合)]]></title>
@@ -252,7 +542,7 @@
     <link href="http://tenlee2012.github.io/2015/07/24/Django+nginx+uwsgi%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2%20%E6%95%B4%E7%90%86/"/>
     <id>http://tenlee2012.github.io/2015/07/24/Django+nginx+uwsgi搭建博客 整理/</id>
     <published>2015-07-24T06:02:17.000Z</published>
-    <updated>2015-07-29T12:13:56.000Z</updated>
+    <updated>2016-03-03T14:55:30.328Z</updated>
     <content type="html"><![CDATA[<blockquote>
 <p>站在前辈的肩膀上</p>
 </blockquote>
@@ -302,7 +592,7 @@
     
     </summary>
     
-      <category term="Python Django Blog" scheme="http://tenlee2012.github.io/tags/Python-Django-Blog/"/>
+      <category term="Django" scheme="http://tenlee2012.github.io/tags/Django/"/>
     
   </entry>
   
