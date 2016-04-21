@@ -236,6 +236,112 @@
             
               
                 
+                <a class="post-title-link" href="/2016/04/21/Django添加全文搜索功能入门/" itemprop="url">
+                  Django添加全文搜索功能入门
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-04-21T22:14:28+08:00" content="2016-04-21">
+              2016-04-21
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/04/21/Django添加全文搜索功能入门/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/04/21/Django添加全文搜索功能入门/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <blockquote>
+<p>感觉网络上关于Django全文搜索的中文文章太少，并且讲的也不是很到位，就是简单介绍了怎么配置，并没有说这样配置有什么用，所以依然很迷茫。所以希望我这篇文章能够帮助到后来人。</p>
+</blockquote>
+<h3 id="一：使用的工具">一：使用的工具</h3><ul>
+<li><a href="http://django-haystack.readthedocs.org/">haystack</a>是django的开源搜索框架，该框架支持<strong><a href="http://django-haystack.readthedocs.org/en/v2.4.1/tutorial.html#solr">Solr</a></strong>, <strong>Elasticsearch</strong>, <strong>Whoosh</strong>, <em>**Xapian</em>搜索引擎，不用更改代码，直接切换引擎，减少代码量。</li>
+<li>搜索引擎使用<a href="https://whoosh.readthedocs.org/en/latest/">Whoosh</a>，这是一个由纯Python实现的全文搜索引擎，没有二进制文件等，比较小巧，配置比较简单，当然性能自然略低。</li>
+<li>中文分词<a href="https://github.com/fxsjy/jieba">Jieba</a>，由于<strong>Whoosh</strong>自带的是英文分词，对中文的分词支持不是太好，故用<strong>jieba</strong>替换<strong>whoosh</strong>的分词组件。</li>
+<li>其他：Python 3.4.4, Django 1.8.3，Debian 4.2.6_3</li>
+</ul>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/04/21/Django添加全文搜索功能入门/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2015/12/11/sqloflibrary/" itemprop="url">
                   简单的图书馆管理系统数据库设计
                 </a>
@@ -1109,105 +1215,6 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2015/07/29/HDU5323/" itemprop="url">
-                  HDU 5323 Solve this interesting problem(2015多校联合)
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2015-07-29T11:24:00+08:00" content="2015-07-29">
-              2015-07-29
-            </time>
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2015/07/29/HDU5323/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/07/29/HDU5323/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h3 id="题目链接：">题目链接：</h3><p><a href="http://acm.hdu.edu.cn/showproblem.php?pid=5323">戳我</a></p>
-<h3 id="题目大意">题目大意</h3><p>$0….n$  建立线段树，问是否存在 区间为 L R 的 这个叶子节点，存在找到最小的$n$，不存在输出$-1$<br>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2015/07/29/HDU5323/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
 
   </section>
 
@@ -1254,7 +1261,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">18</span>
+              <span class="site-state-item-count">19</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>

@@ -2,6 +2,11 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://tenlee2012.github.io/2016/04/21/Django%E6%B7%BB%E5%8A%A0%E5%85%A8%E6%96%87%E6%90%9C%E7%B4%A2%E5%8A%9F%E8%83%BD%E5%85%A5%E9%97%A8/</loc>
+    <lastmod>2016-04-21T14:20:31.664Z</lastmod>
+  </url>
+  
+  <url>
     <loc>http://tenlee2012.github.io/about/index.html</loc>
     <lastmod>2016-03-03T15:30:09.813Z</lastmod>
   </url>
